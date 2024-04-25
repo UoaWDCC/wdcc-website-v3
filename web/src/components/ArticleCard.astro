@@ -1,0 +1,35 @@
+---
+import { Picture } from 'astro:assets';
+import FormattedDate from './FormattedDate.astro';
+import Authors from './Authors.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  href: string;
+  src?: string;
+  date: Date;
+  authors: {
+    name: string;
+    profileIcon: string;
+  }[]
+}
+
+const {
+  title,
+  href,
+  description,
+  src,
+  date,
+  authors = []
+} = Astro.props;
+---
+<a href={href} class="w-full p-4 flex flex-col md:flex-row gap-4 bg-slate-100/40 shadow-xl backdrop-blur-sm rounded-xl">
+  {src && <Picture class="w-full h-32 md:h-full object-cover object-center md:w-80 rounded-xl" width={800} decoding="async" inferSize src={src} alt={title}/>}
+  <div class="w-full flex-col flex gap-2">
+    <p class="text-2xl text-primary font-display font-bold">{title}</p>
+    <!-- <p class="text-xl">{description?.slice(0, 180)}</p> -->
+    <Authors authors={authors} />
+    <p class="text-md"><FormattedDate date={date} /></p>
+  </div>
+</a>

@@ -1,0 +1,74 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import fetchApi from '../lib/strapi';
+import type Article from '../interfaces/article';
+import { Image, getImage } from 'astro:assets';
+import { marked, parse } from 'marked';
+
+import TopographicImageSrc from '../../public/Topographic 3.svg';
+import Layout from '../layouts/layout.astro';
+const TopographicImage = await getImage({ src: TopographicImageSrc});
+
+
+const index = (await fetchApi<any>({
+  endpoint: 'index?populate=*',
+  wrappedByKey: 'data'
+}))
+const introContent = index.attributes.intro && await marked.parse(index.attributes.intro);
+const subIntroContent = index.attributes.subIntro && await marked.parse(index.attributes.subIntro);
+
+---
+
+<Layout title='WDCC' description="The Web Development & Consulting Club @ The University of Auckland">
+  <div class="px-8 flex flex-col gap-4 h-[42vh] sm:h-[54vh] md:h-[70vh] lg:h-screen items-center w-full">
+    <div class="relative w-full">
+      <div class="absolute" style="z-index: 10; left: 0; top: 2rem;">
+        <div class="font-sans text-4xl"><p set:html={introContent} /></div>
+        <div class="font-sans text-4xl font-italic opacity-60"><p set:html={subIntroContent} /></div>
+      </div>
+    </div>
+    <div class="relative h-full w-full lg:mt-0 mt-24">
+      <div class="absolute" style="z-index: 30; left: 0%; top: 32%">
+        <Image src={index.attributes.gallery.data[0].attributes.url} alt="Gallery Photo" width={1200} height={1080} class="w-[50vw] rounded-xl object-cover shadow-lg">
+      </div>
+      <div class="absolute" style="z-index: 20; left: 50%; top: 50%">
+        <Image src={index.attributes.gallery.data[1].attributes.url} alt="Gallery Photo" width={1200} height={1080} class="w-[40vw] rounded-xl object-cover shadow-lg">
+      </div>
+      <div class="absolute" style="z-index: 10; left: 50%; top: 5%">
+        <Image src={index.attributes.gallery.data[2].attributes.url} alt="Gallery Photo" width={1200} height={1080} class="w-[55vw] rounded-xl object-cover shadow-lg">
+      </div>
+      <!-- Add as many photos as you want following the same pattern -->
+    </div>
+  </div>
+  <div class="flex flex-col md:flex-row gap-12 md:gap-4 px-8 md:py-32 pb-18 pt-24 justify-around">
+    <p class="text-xl md:text-3xl w-full md:w-1/2">{index.attributes.about}</p>
+    <div class="flex flex-col gap-2 text-2xl items-left">
+      {index.attributes.links.map(({value, href}: {value: string, href: string}) => (
+        <>
+          <a href={href} class="flex flex-row gap-4">{value}<img class="w-4" src="/Arrow 1.svg"></a>
+          <hr class="text-black/60 border-2" />
+        </>
+      ))} 
+          </div>
+  </div>
+  <div class="px-8 flex flex-col gap-4 h-[35vh] sm:h-[55vh] md:h-[70vh] lg:h-screen items-center w-full">
+    <div class="relative h-full w-full lg:mt-16 mt-8">
+      <div class="absolute" style="z-index: 30; left: 0%; top: 32%">
+        <Image src={index.attributes.gallery.data[3].attributes.url} alt="" width={1200} height={1080} class="w-[30vw] rounded-xl object-cover shadow-lg">
+      </div>
+      <div class="absolute" style="z-index: 10; right: 0%; top: 5%">
+        <Image src={index.attributes.gallery.data[4].attributes.url} alt="" width={1200} height={1080} class="w-[50vw] rounded-xl object-cover shadow-lg">
+      </div>
+      <div class="absolute" style="z-index: 20; right: 20%; bottom: 15%">
+        <Image src={index.attributes.gallery.data[5].attributes.url} alt="" width={1200} height={1080} class="w-[40vw] rounded-xl object-cover shadow-lg">
+      </div>
+      <div class="absolute" style="z-index: 40; left: 15%; top: 10%">
+        <Image src={index.attributes.gallery.data[6].attributes.url} alt="" width={1200} height={1080} class="w-[40vw] rounded-xl object-cover shadow-lg">
+      </div>
+      <!-- Add as many photos as you want following the same pattern -->
+    </div>
+  </div>
+</Layout>

@@ -1,0 +1,32 @@
+---
+import HeaderLink from './HeaderLink.astro';
+import { SITE_TITLE } from '../consts';
+import { Image, getImage } from 'astro:assets';
+
+import HomeIconSrc from '../../public/Vector.svg';
+const HomeIcon = await getImage({ src: HomeIconSrc});
+---
+
+<header>
+  <nav class="flex flex-row justify-between p-10 bg-transparent sticky items-center">
+    <div>
+      <a href="/"><Image src={HomeIcon.src} width={30} height={30} alt="Home" /></a>
+    </div>
+    <div class="flex md:hidden" onclick="document.getElementById('hamburg-options').showModal()"><img width={40} src="/hamburg.svg" /></div>
+    <dialog class="rounded-xl absolute w-screen h-full p-4 bg-white/50 backdrop-blur-lg shadow-sm" id="hamburg-options">
+       <div class="flex flex-col justify-center items-center w-full h-full" onclick="document.getElementById('hamburg-options').close()">
+        <div class=" p-8 flex flex-col justify-center items-center gap-8 text-3xl">
+            <a>About</a>
+            <a href="/articles">Articles</a>
+            <a>Projects</a>     
+        </div>
+
+       </div>
+    </dialog>
+    <div class="hidden md:flex md:flex-row gap-8 text-primary font-sans  text-xl cursor-pointer">
+      <a>About</a>
+      <a href="/articles">Articles</a>
+      <a>Projects</a>
+    </div>
+  </nav>
+</header>
