@@ -1,20 +1,25 @@
 ---
-name: Feature request
-about: Suggest an idea for this project
-title: ''
-labels: ''
-assignees: ''
-
+name: Issue Template
+about: For new issues
+title: ""
+labels: ""
+assignees: ""
 ---
 
-**Is your feature request related to a problem? Please describe.**
-A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+## Description
 
-**Describe the solution you'd like**
-A clear and concise description of what you want to happen.
+As a
+I want to
+So that
 
-**Describe alternatives you've considered**
-A clear and concise description of any alternative solutions or features you've considered.
+<!-- Further description if needed. -->
 
-**Additional context**
-Add any other context or screenshots about the feature request here.
+## Proposed Solution
+
+<!-- Document your proposed solution here (e.g. flowcharts, schemas, links to Figma etc) and ping the relevant lead to review it before coding! -->
+
+## Acceptance Criteria
+
+- [ ]
+
+## Notes
