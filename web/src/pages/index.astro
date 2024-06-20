@@ -8,17 +8,15 @@ import type Article from '../interfaces/article';
 import { Image, getImage } from 'astro:assets';
 import { marked, parse } from 'marked';
 
-import TopographicImageSrc from '../../public/Topographic 3.svg';
 import Layout from '../layouts/layout.astro';
-const TopographicImage = await getImage({ src: TopographicImageSrc});
 
 
 const index = (await fetchApi<any>({
   endpoint: 'index?populate=*',
   wrappedByKey: 'data'
 }))
-const introContent = index.attributes.intro && await marked.parse(index.attributes.intro);
-const subIntroContent = index.attributes.subIntro && await marked.parse(index.attributes.subIntro);
+// const introContent = index.attributes.intro && await marked.parse(index.attributes.intro);
+// const subIntroContent = index.attributes.subIntro && await marked.parse(index.attributes.subIntro);
 
 ---
 

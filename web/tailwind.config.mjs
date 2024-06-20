@@ -4,8 +4,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Atkinson Hyperlegible'],
-        display: ['Metropolis'],
+        sans: ['Montserrat'],
+        display: ['Montserrat'],
       },
       colors: {
         primary: '#200E32',
