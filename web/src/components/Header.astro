@@ -7,28 +7,46 @@ import HomeIconSrc from '../../public/Vector.svg';
 const HomeIcon = await getImage({ src: HomeIconSrc});
 ---
 
-<header>
+<script defer>
+  function openMenu() {
+    // Disable scrolling
+    document.querySelector("body").style.overflowY = "hidden";
+    // Show menu
+    document.querySelector("#hamburg-options").style.display = "flex";
+  }
+  function closeMenu() {
+    // Enable scrolling
+    document.querySelector("body").style.overflowY = "auto";
+    // Hide menu
+    document.querySelector("#hamburg-options").style.display = "none";
+  }
+</script>
+
+<header class="z-50 relative">
   <nav class="flex flex-row justify-between p-10 bg-transparent sticky items-center">
     <div>
-      <a href="/">WDCC</a>
+      <a href="/"><Image src={HomeIcon.src} width={30} height={30} alt="Home" /></a>
     </div>
-    <div class="flex md:hidden" onclick="document.getElementById('hamburg-options').showModal()"><img width={40} src="/hamburg.svg" /></div>
-    <dialog class="rounded-xl absolute w-screen h-full p-4 bg-white/50 backdrop-blur-lg shadow-sm" id="hamburg-options">
-       <div class="flex flex-col justify-center items-center w-full h-full" onclick="document.getElementById('hamburg-options').close()">
-        <div class=" p-8 flex flex-col justify-center items-center gap-8 text-3xl">
-            <a>About</a>
-            <a href="/articles">Articles</a>
-            <a href="/articles">Sponsors</a>
-            <a href="/articles">Join</a>
-            <a>Projects</a>     
-        </div>
-
-       </div>
-    </dialog>
-    <div class="hidden md:flex md:flex-row gap-8 text-primary font-sans  text-xl cursor-pointer">
+    <div class="flex md:hidden" onclick="openMenu()"><img width={40} src="/hamburg.svg" /></div>
+    <div style={{
+      display: 'none'
+    }} class="top-0 left-0 z-[999] rounded-xl fixed w-screen h-screen p-4 bg-white/50 backdrop-blur-lg shadow-sm" id="hamburg-options">
+       <div class="flex flex-col justify-center items-center w-full h-full" onclick="closeMenu()">
+        <div class="p-8 flex flex-col justify-center items-center gap-8 text-3xl">
       <a>About</a>
+      <a>Sponsors</a>
       <a href="/articles">Articles</a>
       <a>Projects</a>
+      <a>Join</a>  
+        </div>
+       </div>
+      </div>
+    <div class="hidden md:flex md:flex-row gap-8 text-primary font-sans  text-xl cursor-pointer">
+      <a>About</a>
+      <a>Sponsors</a>
+      <a href="/articles">Articles</a>
+      <a>Projects</a>
+      <a>Join</a>
     </div>
   </nav>
 </header>
