@@ -56,4 +56,24 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  h1 {
+    @apply text-6xl font-extrabold leading-[5.8rem];
+  }
+
+  h2 {
+    @apply text-5xl font-extrabold leading-[3.75rem];
+  }
+
+  h3 {
+    @apply text-4xl font-bold leading-[2.5625rem];
+  }
+
+  h4 {
+    @apply text-3xl font-bold leading-[1.7625rem];
+  }
+
+  p {
+    @apply text-base leading-[1.5rem];
+  }
 }

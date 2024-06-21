@@ -8,10 +8,30 @@ module.exports = {
       center: true,
       padding: "2rem",
       screens: {
+        sm: "640px",
+        md: "768px",
+        lg: "1024px",
+        xl: "1125px",
         "2xl": "1400px",
       },
     },
+    fontSize: {
+      xs: "0.75rem",
+      sm: "0.875rem",
+      base: "1rem",
+      lg: "1.125rem",
+      xl: "1.25rem",
+      "2xl": "1.5rem",
+      "3xl": "1.75rem",
+      "4xl": "2.25rem",
+      "5xl": "3rem",
+      "6xl": "4.5rem",
+    },
     extend: {
+      fontFamily: {
+        sans: ["Quicksand", "sans-serif"],
+        display: ["Quicksand", "sans-serif"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -47,6 +67,7 @@ module.exports = {
           foreground: "hsl(var(--card-foreground))",
         },
       },
+
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
