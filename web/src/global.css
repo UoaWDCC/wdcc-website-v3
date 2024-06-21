@@ -74,6 +74,6 @@
   }
 
   p {
-    @apply text-base leading-[1.5rem];
+    @apply text-base leading-[1.5rem] font-[500];
   }
 }
