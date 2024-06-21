@@ -1,10 +1,10 @@
-import type { Schema, Attribute } from '@strapi/strapi';
+import type { Schema, Attribute } from "@strapi/strapi";
 
 export interface AuthorAuthor extends Schema.Component {
-  collectionName: 'components_author_authors';
+  collectionName: "components_author_authors";
   info: {
-    displayName: 'Author';
-    description: '';
+    displayName: "Author";
+    description: "";
   };
   attributes: {
     name: Attribute.String & Attribute.Required;
@@ -13,10 +13,10 @@ export interface AuthorAuthor extends Schema.Component {
 }
 
 export interface LinkLink extends Schema.Component {
-  collectionName: 'components_link_links';
+  collectionName: "components_link_links";
   info: {
-    displayName: 'Link';
-    description: '';
+    displayName: "Link";
+    description: "";
   };
   attributes: {
     value: Attribute.String;
@@ -24,11 +24,11 @@ export interface LinkLink extends Schema.Component {
   };
 }
 
-declare module '@strapi/types' {
+declare module "@strapi/types" {
   export module Shared {
     export interface Components {
-      'author.author': AuthorAuthor;
-      'link.link': LinkLink;
+      "author.author": AuthorAuthor;
+      "link.link": LinkLink;
     }
   }
 }
