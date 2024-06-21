@@ -1,0 +1,9 @@
+{
+  "name": "wdcc-website-v3",
+  "version": "1.0.0",
+  "repository": "https://github.com/UoaWDCC/wdcc-website-v3.git",
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "3.3.2"
+  }
+}
