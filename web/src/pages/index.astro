@@ -9,16 +9,19 @@ import { Image, getImage } from 'astro:assets';
 import { marked, parse } from 'marked';
 
 import Layout from '../layouts/layout.astro';
+import { Button } from "@/components/ui/button"
+import "@/global.css"
 
 
-const index = (await fetchApi<any>({
-  endpoint: 'index?populate=*',
-  wrappedByKey: 'data'
-}))
+// const index = (await fetchApi<any>({
+//   endpoint: 'index?populate=*',
+//   wrappedByKey: 'data'
+// }))
 // const introContent = index.attributes.intro && await marked.parse(index.attributes.intro);
 // const subIntroContent = index.attributes.subIntro && await marked.parse(index.attributes.subIntro);
 
 ---
 
 <Layout title='WDCC' description="The Web Development & Consulting Club @ The University of Auckland">
+  <Button>Hello</Button>
 </Layout>
