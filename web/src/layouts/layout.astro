@@ -1,6 +1,6 @@
 ---
+import Header from "@/components/navigation/Header";
 import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 
 interface Props {
@@ -10,7 +10,7 @@ interface Props {
 
 const { title, description }: Props = Astro.props;
 
-import { Image, getImage } from "astro:assets";
+import { getImage } from "astro:assets";
 
 import TopographicImageSrc from "../../public/Topographic 3.svg";
 const TopographicImage = await getImage({ src: TopographicImageSrc });
@@ -23,7 +23,7 @@ const TopographicImage = await getImage({ src: TopographicImageSrc });
   </head>
 
 	<body class="max-h-screen relative bg-slate-100 max-w-[1125px] mx-auto">
-		<Header />
+		<Header client:only="react"/>
 		<main class="min-h-full static">
       <slot />
       <!-- <Image alt="Topographic Wallpaper" width={100} height={200} quality="max" class="w-full absolute top-0 -z-10 opacity-70" src={TopographicImage.src}/>  -->
