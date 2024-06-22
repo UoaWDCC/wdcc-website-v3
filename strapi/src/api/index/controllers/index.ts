@@ -2,6 +2,6 @@
  * index controller
  */
 
-import { factories } from '@strapi/strapi'
+import { factories } from "@strapi/strapi";
 
-export default factories.createCoreController('api::index.index');
+export default factories.createCoreController("api::index.index");

@@ -1,17 +1,17 @@
 ---
 import { Image } from "astro:assets";
 
-const { authors } = Astro.props; 
+const { authors } = Astro.props;
 
 interface Author {
   name: string;
   profileIcon: {
     data: {
       attributes: {
-        url: string
-      }
-    }
-  }
+        url: string;
+      };
+    };
+  };
 }
 
 interface WrappedAuthor {
@@ -19,15 +19,27 @@ interface WrappedAuthor {
   url: string;
 }
 
-let profilePictures: WrappedAuthor[] = authors.map((author: Author) => (
-  {url: author.profileIcon.data.attributes.url, name: author.name}
-));
+let profilePictures: WrappedAuthor[] = authors.map((author: Author) => ({
+  url: author.profileIcon.data.attributes.url,
+  name: author.name,
+}));
 ---
+
 <div class="flex flex-row gap-2 items-center">
-  <div class="flex flex-row" style=>
-    {profilePictures.map(({name, url}, index) => (
-      <Image class={`${index !== 0 ? '-ml-2' : 'z-10'} rounded-full w-[36px] h-[36px] object-cover`} width={64} height={64} alt={name} src={url} />
-    ))}
+  <div class="flex flex-row" style="">
+    {
+      profilePictures.map(({ name, url }, index) => (
+        <Image
+          class={`${index !== 0 ? "-ml-2" : "z-10"} rounded-full w-[36px] h-[36px] object-cover`}
+          width={64}
+          height={64}
+          alt={name}
+          src={url}
+        />
+      ))
+    }
   </div>
-  <p class=" text-primary">{profilePictures.map(({name}) => name).join(", ")}</p>
+  <p class="text-primary">
+    {profilePictures.map(({ name }) => name).join(", ")}
+  </p>
 </div>

@@ -1,0 +1,16 @@
+{
+  "name": "wdcc-website-v3",
+  "version": "1.0.0",
+  "repository": "https://github.com/UoaWDCC/wdcc-website-v3.git",
+  "license": "MIT",
+  "scripts": {
+    "setup": "yarn && cd ./web && yarn && cd ../strapi && yarn",
+    "dev": "concurrently \"cd ./web && yarn dev\" \"cd ./strapi && yarn dev\"",
+    "lint": "prettier --write ."
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "prettier": "3.3.2",
+    "prettier-plugin-astro": "^0.14.0"
+  }
+}

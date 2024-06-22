@@ -1,0 +1,5 @@
+node_modules
+.astro
+.strapi
+.tmp
+dist
