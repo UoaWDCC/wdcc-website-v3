@@ -1,15 +1,14 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
-import FormattedDate from '../../components/FormattedDate.astro';
-import fetchApi from '../../lib/strapi';
-import type Article from '../../interfaces/article';
-import { Image, Picture } from 'astro:assets';
-import Layout from '../../layouts/layout.astro';
-import ArticleCard from '../../components/ArticleCard.astro';
-
+import BaseHead from "../../components/BaseHead.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
+import FormattedDate from "../../components/FormattedDate.astro";
+import fetchApi from "../../lib/strapi";
+import type Article from "../../interfaces/article";
+import { Image, Picture } from "astro:assets";
+import Layout from "../../layouts/layout.astro";
+import ArticleCard from "../../components/ArticleCard.astro";
 
 // const articles = (await fetchApi<Article[]>({
 //     endpoint: 'articles?populate=deep,3',
@@ -24,7 +23,7 @@ import ArticleCard from '../../components/ArticleCard.astro';
     <h1 class="text-primary font-display font-bold text-3xl">Articles</h1>
     <ul>
       {
-        // articles.map((article: Article) => { 
+        // articles.map((article: Article) => {
         //   return (
         //     <li>
         //       <ArticleCard authors={article.attributes?.authors.map((element) => ({
@@ -33,7 +32,7 @@ import ArticleCard from '../../components/ArticleCard.astro';
         //       }))} description={article.attributes.description} title={article.attributes.title} src={article.attributes.image?.data?.attributes?.url} date={new Date(article.attributes.publishedAt)} href={`/articles/${article.attributes.slug}/`}/>
         //     </li>
         // );
-      // })
+        // })
       }
     </ul>
   </main>
