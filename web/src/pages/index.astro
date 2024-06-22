@@ -1,15 +1,8 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
-import fetchApi from "../lib/strapi";
-import type Article from "../interfaces/article";
-import { Image, getImage } from "astro:assets";
-import { marked, parse } from "marked";
+import Hero from "@/components/home/Hero";
+import "@/global.css";
 import Layout from '../layouts/layout.astro';
-import { Button } from "@/components/ui/button"
-import "@/global.css"
+import fetchApi from "../lib/strapi";
 
 const index = await fetchApi<any>({
   endpoint: "index?populate=*",
@@ -21,12 +14,8 @@ const index = await fetchApi<any>({
 ---
 
 <Layout title='WDCC' description="The Web Development & Consulting Club @ The University of Auckland">
-  <h1>Test H1</h1>
-  <h2>Test H2</h2>
-  <h3>Test H3</h3>
-  <h4>Test H4</h4>
-  <p>Test P</p>
-  <p class="text-sm">Text xs</p>
-  <Button>Hello</Button>
+  <div class="container">
+    <Hero/>
+  </div>
 </Layout>
 
