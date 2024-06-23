@@ -1,0 +1,25 @@
+---
+import { Button } from "@/components/ui/button";
+import "@/global.css";
+import Layout from '../layouts/layout.astro';
+import fetchApi from "../lib/strapi";
+
+const index = await fetchApi<any>({
+  endpoint: "index?populate=*",
+  wrappedByKey: "data",
+});
+
+// const introContent = index.attributes.intro && await marked.parse(index.attributes.intro);
+// const subIntroContent = index.attributes.subIntro && await marked.parse(index.attributes.subIntro);
+---
+
+<Layout title='Projects' description="Projects @ WDCC">
+  <h1>Test H1</h1>
+  <h2>Test H2</h2>
+  <h3>Test H3</h3>
+  <h4>Test H4</h4>
+  <p>Test P</p>
+  <p class="text-sm">Text xs</p>
+  <Button>Hello</Button>
+</Layout>
+
