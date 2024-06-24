@@ -24,13 +24,13 @@ export default async function fetchApi<T>({
   }
 
   const url = new URL(`${import.meta.env.STRAPI_URL}/api/${endpoint}`);
-
   if (query) {
     Object.entries(query).forEach(([key, value]) => {
       url.searchParams.append(key, value);
     });
   }
   const res = await fetch(url.toString());
+  console.log(url.toString());
   let data = await res.json();
 
   if (wrappedByKey) {
@@ -40,6 +40,7 @@ export default async function fetchApi<T>({
   if (wrappedByList) {
     data = data[0];
   }
+
 
   return data as T;
 }
