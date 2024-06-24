@@ -1,7 +1,7 @@
 ---
 import Hero from "@/components/home/Hero";
 import "@/global.css";
-import Layout from '../layouts/layout.astro';
+import Layout from "../layouts/layout.astro";
 import fetchApi from "../lib/strapi";
 
 const STRAPI_URL = import.meta.env.STRAPI_URL;
@@ -11,17 +11,19 @@ const index = await fetchApi<any>({
   wrappedByKey: "data",
 });
 
-
 const intro = index.attributes.intro;
 const subIntro = index.attributes.subintro;
-const imageUrl = STRAPI_URL + index.attributes.gallery.data[0].attributes.formats.large.url;
+const imageUrl =
+  STRAPI_URL + index.attributes.gallery.data[0].attributes.formats.large.url;
 const imageAlt = index.attributes.gallery.data[0].attributes.alternativeText;
 const linkHref = index.attributes.links[0].href;
 const linkText = index.attributes.links[0].value;
-
 ---
 
-<Layout title='WDCC' description="The Web Development & Consulting Club @ The University of Auckland">
+<Layout
+  title="WDCC"
+  description="The Web Development & Consulting Club @ The University of Auckland"
+>
   <div class="container">
     <Hero
       intro={intro}
@@ -29,7 +31,7 @@ const linkText = index.attributes.links[0].value;
       imageUrl={imageUrl}
       imageAlt={imageAlt}
       linkHref={linkHref}
-      linkText={linkText}/>
+      linkText={linkText}
+    />
   </div>
 </Layout>
-
