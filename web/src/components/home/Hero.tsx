@@ -20,9 +20,9 @@ const Hero = ({
   linkText,
 }: HeroProps) => {
   return (
-    <div className="flex flex-col items-center gap-4 lg:gap-8">
+    <div className="flex flex-col items-center gap-6 lg:gap-8">
       <SkybluePillButton>The University of Auckland</SkybluePillButton>
-      <h1 className="text-center leading-[1.7625rem] md:leading-[5.8rem] text-2xl  md:text-6xl">
+      <h1 className="text-center leading-[2.7625rem] md:leading-[4.2rem] lg:leading-[5.8rem] text-4xl md:text-5xl lg:text-6xl">
         {intro}
       </h1>
       <p className="max-w-md overflow-hidden flex items-center justify-center text-center">
