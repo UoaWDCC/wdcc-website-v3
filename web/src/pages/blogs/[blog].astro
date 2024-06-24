@@ -1,0 +1,14 @@
+---
+import Layout from "@/layouts/layout.astro";
+
+const { blog } = Astro.params;
+---
+
+<Layout>
+  <!-- We need to make these three components -->
+  <p>{ blog }</p>
+  <!-- <BlogHeader /> -->
+  <!-- <BlogContent /> -->
+  <h2>More Blogs</h2>
+  <!-- <BlogsCaraousel /> -->
+</Layout>
