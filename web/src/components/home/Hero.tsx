@@ -1,5 +1,4 @@
 import ResponsiveImage from "../ResponsiveImage";
-import SkybluePillButton from "../ui/SkybluePillButton";
 import { Button } from "../ui/button";
 
 interface HeroProps {
@@ -21,7 +20,9 @@ const Hero = ({
 }: HeroProps) => {
   return (
     <div className="flex flex-col items-center gap-6 lg:gap-8">
-      <SkybluePillButton>The University of Auckland</SkybluePillButton>
+      <Button variant="skyblue" className="rounded-full px-8 cursor-default">
+        The University of Auckland
+      </Button>
       <h1 className="text-center leading-[2.7625rem] md:leading-[4.2rem] lg:leading-[5.8rem] text-4xl md:text-5xl lg:text-6xl">
         {intro}
       </h1>
