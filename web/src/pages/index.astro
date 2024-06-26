@@ -9,6 +9,15 @@ const index = await fetchApi<any>({
   wrappedByKey: "data",
 });
 
+const sponsors = await fetchApi<any>({
+  endpoint: "sponsors?populate=*",
+  wrappedByKey: "data",
+});
+
+console.log(sponsors[1].attributes.Logo.data.attributes.formats.small.url);
+
+
+
 // const introContent = index.attributes.intro && await marked.parse(index.attributes.intro);
 // const subIntroContent = index.attributes.subIntro && await marked.parse(index.attributes.subIntro);
 ---
@@ -23,6 +32,17 @@ const index = await fetchApi<any>({
   <Button>Hello</Button>
   <div class="sponsors text-center">
     <h2>Sponsors</h2>
+    <h3>Gold Sponsors</h3>
+    {sponsors.map((sponsor: any) => {
+      if (sponsor.attributes.Type === "Gold") {
+        return (
+          <div class="sponsor">
+            <img src={sponsor.attributes.Logo.data.attributes.formats.small.url} alt={sponsor.attributes.Name} />
+          </div>
+        );
+      }
+    })}
   </div>
+
 </Layout>
 
