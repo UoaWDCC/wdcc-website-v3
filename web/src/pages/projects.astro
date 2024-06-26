@@ -1,5 +1,11 @@
 ---
 import Layout from "../layouts/layout.astro";
+import fetchApi from "../lib/strapi";
+const index = await fetchApi<any>({
+  endpoint: "projects?populate=*",
+  wrappedByKey: "data",
+});
+console.log(index);
 ---
 
 <Layout
@@ -7,6 +13,10 @@ import Layout from "../layouts/layout.astro";
   description="The Web Development & Consulting Club @ The University of Auckland"
 >
   <div class="container">
-    <h1>Hi Naren</h1>
+    <h1
+      class="text-center leading-[2.7625rem] md:leading-[4.2rem] lg:leading-[5.8rem] text-4xl md:text-5xl lg:text-6xl"
+    >
+      WDCC Projects
+    </h1>
   </div>
 </Layout>
