@@ -6,6 +6,25 @@ import fetchApi from "../lib/strapi";
 
 const STRAPI_URL = import.meta.env.STRAPI_URL;
 
+interface Sponsor {
+  id: number;
+  attributes: {
+    Name: string;
+    Type: string;
+    Logo: {
+      data: {
+        attributes: {
+          formats: {
+            small: {
+              url: string;
+            };
+          };
+        };
+      };
+    };
+  };
+}
+
 const index = await fetchApi<any>({
   endpoint: "index?populate=*",
   wrappedByKey: "data",
@@ -15,6 +34,38 @@ const sponsors = await fetchApi<any>({
   endpoint: "sponsors?populate=*",
   wrappedByKey: "data",
 });
+
+interface SponsorSectionProps {
+  title: string;
+  sponsors: Sponsor[];
+}
+
+const SponsorSection: React.FC<SponsorSectionProps> = ({ title, sponsors }) => (
+  <div>
+    <h3>{title}</h3>
+    {sponsors.map((sponsor: Sponsor) => (
+      <div class="sponsor">
+        <img src={STRAPI_URL + sponsor.attributes.Logo.data.attributes.formats.small.url} alt={sponsor.attributes.Name} />
+      </div>
+    ))}
+  </div>
+);
+
+const sponsorCategories: Record<string, Sponsor[]> = {
+  Gold: [],
+  Silver: [],
+  Bronze: [],
+  Tech: [],
+  Community: [],
+};
+
+sponsors.forEach((sponsor: Sponsor) => {
+  const type = sponsor.attributes.Type;
+  if (sponsorCategories[type]) {
+    sponsorCategories[type].push(sponsor);
+  }
+});
+
 
 console.log(sponsors);
 // const introContent = index.attributes.intro && await marked.parse(index.attributes.intro);
