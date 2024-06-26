@@ -5,8 +5,9 @@ import Layout from "@/layouts/layout.astro";
 
 const { blog } = Astro.params;
 
+// hardcoded with same stuff from figma for now
 const blogData = {
-  imageUrl: '/path/to/image.jpg', // Update this to the path of your image
+  imageUrl: '/path/to/image.jpg',
   title: 'Blog Title',
   datePublished: 'Date Published',
   authorName: 'Author Name',
@@ -46,6 +47,6 @@ const articles = [
     authorName={blogData.authorName}
     content={blogData.content}
   />
-  <h2>More Blogs</h2>
+  <h1>More Blogs</h1>
   <SwiperCarouselWrapper articles={articles} />
 </Layout>

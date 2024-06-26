@@ -22,42 +22,46 @@ const { imageUrl, title, datePublished, authorName, content } = Astro.props;
 </div>
 
 <style>
-.blog-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2rem;
-  text-align: center;
-}
+  .blog-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    text-align: left;
+  }
 
-.blog-header__image {
-  max-width: 100%;
-  height: auto;
-  border-radius: 10px;
-}
+  .blog-header__image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    align-items: center;
+  }
 
-.blog-header__text {
-  max-width: 800px;
-}
+  .blog-header__text {
+    max-width: 800px;
+    text-align: left;
+  }
 
-.blog-header__title {
-  font-size: 2.5rem;
-  margin: 1rem 0;
-}
+  .blog-header__title {
+    font-size: 2.5rem;
+    margin: 1rem 0;
+    text-align: left;
+  }
 
-.blog-header__meta {
-  font-size: 1rem;
-  color: #6c757d;
-}
+  .blog-header__meta {
+    font-size: 1rem;
+    color: #6c757d;
+  }
 
-.blog-header__author, .blog-header__date {
-  font-weight: bold;
-  color: #087DF1;
-}
+  .blog-header__author, .blog-header__date {
+    font-weight: bold;
+    color: #087DF1;
+  }
 
-.blog-header__content {
-  font-size: 1.25rem;
-  color: #343a40;
-  margin-top: 1rem;
-}
+  .blog-header__content {
+    font-size: 1.25rem;
+    color: #343a40;
+    margin-top: 1rem;
+    text-align: left;
+  }
 </style>
