@@ -1,5 +1,1 @@
-{
-  "images": {
-    "remote_images": ["https?://wdcc-website\\.fly\\.storage\\.tigris\\.dev/.*"]
-  }
-}
+{"images":{"remote_images":["https?://wdcc-website\\.fly\\.storage\\.tigris\\.dev/.*"]}}

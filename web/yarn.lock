@@ -2638,10 +2638,10 @@ marked-shiki@^1.0.1:
   resolved "https://registry.yarnpkg.com/marked-shiki/-/marked-shiki-1.0.1.tgz#afc2a83d3d8db27e54bcb4105d6263a79a5fedd7"
   integrity sha512-fVz5Gq4ZBEptQH4kZTpNfILLxnBONxrXdpjko7rfXm68psltGaZL5VcR1xNNbF/ZN7W4u7ba5fxM+bzzEZoPlQ==
 
-marked@^12.0.1:
-  version "12.0.1"
-  resolved "https://registry.yarnpkg.com/marked/-/marked-12.0.1.tgz#8ab1eb15560c7cbe3b011074845d7ca6c4d392b0"
-  integrity sha512-Y1/V2yafOcOdWQCX0XpAKXzDakPOpn6U0YLxTJs3cww6VxOzZV1BTOOYWLvH3gX38cq+iLwljHHTnMtlDfg01Q==
+marked@^13.0.1:
+  version "13.0.1"
+  resolved "https://registry.yarnpkg.com/marked/-/marked-13.0.1.tgz#38386e1ebe9c09bb4db72c8ed9759411cb80fd43"
+  integrity sha512-7kBohS6GrZKvCsNXZyVVXSW7/hGBHe49ng99YPkDCckSUrrG7MSFLCexsRxptzOmyW2eT5dySh4Md1V6my52fA==
 
 mdast-util-definitions@^6.0.0:
   version "6.0.0"
