@@ -18,4 +18,4 @@ interface Article {
 const { articles } = Astro.props;
 ---
 
-<SwiperCarousel client:load articles={articles} />
+<SwiperCarousel client:only="react" articles={articles} />
