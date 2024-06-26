@@ -1,14 +1,38 @@
 ---
+// src/pages/blogs/[blog].astro
+
+import SwiperCarouselWrapper from "@/components/SwiperCarouselWrapper.astro";
 import Layout from "@/layouts/layout.astro";
 
 const { blog } = Astro.params;
+
+const articles = [
+  {
+    title: 'Article 1',
+    description: 'Description for Article 1',
+    href: '/article-1',
+    src: '/path/to/image1.jpg',
+    date: new Date(),
+    authors: [
+      { name: 'Author 1', profileIcon: '/path/to/author1.jpg' },
+    ],
+  },
+  {
+    title: 'Article 2',
+    description: 'Description for Article 2',
+    href: '/article-2',
+    src: '/path/to/image2.jpg',
+    date: new Date(),
+    authors: [
+      { name: 'Author 2', profileIcon: '/path/to/author2.jpg' },
+    ],
+  },
+  // Add more articles as needed
+];
 ---
 
 <Layout>
-  <!-- We need to make these three components -->
   <p>{ blog }</p>
-  <!-- <BlogHeader /> -->
-  <!-- <BlogContent /> -->
   <h2>More Blogs</h2>
-  <!-- <BlogsCaraousel /> -->
+  <SwiperCarouselWrapper articles={articles} />
 </Layout>

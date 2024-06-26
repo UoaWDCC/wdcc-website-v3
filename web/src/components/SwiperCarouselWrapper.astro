@@ -1,0 +1,21 @@
+---
+// src/components/SwiperCarouselWrapper.astro
+
+import SwiperCarousel from './SwiperCarousel.jsx';
+
+interface Article {
+  title: string;
+  description?: string;
+  href: string;
+  src?: string;
+  date: Date;
+  authors: {
+    name: string;
+    profileIcon: string;
+  }[];
+}
+
+const { articles } = Astro.props;
+---
+
+<SwiperCarousel client:load articles={articles} />
