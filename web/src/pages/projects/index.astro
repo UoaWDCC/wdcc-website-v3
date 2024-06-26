@@ -1,11 +1,13 @@
 ---
-import Layout from "../../layouts/layout.astro";
+import MarkdownComponent from "@/components/MarkdownComponent.astro";
+import Layout from "@/layouts/layout.astro";
 import fetchApi from "../../lib/strapi";
 const index = await fetchApi<any>({
   endpoint: "projects?populate=*",
   wrappedByKey: "data",
 });
-console.log(index);
+const description =
+  "**WDCC projects** provides an opportunity for students to apply the knowledge they have learned in courses and workshops in real life situations. Collaborate with other members in a team environment to build a project that will actually be deployed and used by others.";
 ---
 
 <Layout
@@ -14,9 +16,10 @@ console.log(index);
 >
   <div class="container">
     <h1
-      class="text-center leading-[2.7625rem] md:leading-[4.2rem] lg:leading-[5.8rem] text-4xl md:text-5xl lg:text-6xl"
+      class="text-center text-bold leading-[2.7625rem] md:leading-[4.2rem] lg:leading-[5.8rem] text-4xl md:text-5xl lg:text-6xl"
     >
       WDCC Projects
     </h1>
+    <MarkdownComponent content={description} />
   </div>
 </Layout>
