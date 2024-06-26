@@ -1,10 +1,17 @@
 ---
-// src/pages/blogs/[blog].astro
-
+import BlogHeader from "@/components/BlogHeader.astro";
 import SwiperCarouselWrapper from "@/components/SwiperCarouselWrapper.astro";
 import Layout from "@/layouts/layout.astro";
 
 const { blog } = Astro.params;
+
+const blogData = {
+  imageUrl: '/path/to/image.jpg', // Update this to the path of your image
+  title: 'Blog Title',
+  datePublished: 'Date Published',
+  authorName: 'Author Name',
+  content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+};
 
 const articles = [
   {
@@ -32,7 +39,13 @@ const articles = [
 ---
 
 <Layout>
-  <p>{ blog }</p>
+  <BlogHeader
+    imageUrl={blogData.imageUrl}
+    title={blogData.title}
+    datePublished={blogData.datePublished}
+    authorName={blogData.authorName}
+    content={blogData.content}
+  />
   <h2>More Blogs</h2>
   <SwiperCarouselWrapper articles={articles} />
 </Layout>
