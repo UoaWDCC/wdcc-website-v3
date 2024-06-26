@@ -4,6 +4,8 @@ import "@/global.css";
 import Layout from '../layouts/layout.astro';
 import fetchApi from "../lib/strapi";
 
+const STRAPI_URL = import.meta.env.STRAPI_URL;
+
 const index = await fetchApi<any>({
   endpoint: "index?populate=*",
   wrappedByKey: "data",
@@ -14,7 +16,7 @@ const sponsors = await fetchApi<any>({
   wrappedByKey: "data",
 });
 
-console.log(sponsors[1].attributes.Logo.data.attributes.formats.small.url);
+console.log(sponsors);
 // const introContent = index.attributes.intro && await marked.parse(index.attributes.intro);
 // const subIntroContent = index.attributes.subIntro && await marked.parse(index.attributes.subIntro);
 ---
@@ -34,12 +36,53 @@ console.log(sponsors[1].attributes.Logo.data.attributes.formats.small.url);
       if (sponsor.attributes.Type === "Gold") {
         return (
           <div class="sponsor">
-            <img src={sponsor.attributes.Logo.data.attributes.formats.small.url} alt={sponsor.attributes.Name} />
+            <img src={STRAPI_URL + sponsor.attributes.Logo.data.attributes.formats.small.url} alt={sponsor.attributes.Name} />
+          </div>
+        );
+      }
+    })}
+    <h3>Silver Sponsors</h3>
+    {sponsors.map((sponsor: any) => {
+      if (sponsor.attributes.Type === "Silver") {
+        return (
+          <div class="sponsor">
+            <img src={STRAPI_URL + sponsor.attributes.Logo.data.attributes.formats.small.url} alt={sponsor.attributes.Name} />
+          </div>
+        );
+      }
+    })}
+    <h3>Bronze Sponsors</h3>
+    {sponsors.map((sponsor: any) => {
+      if (sponsor.attributes.Type === "Bronze") {
+        return (
+          <div class="sponsor">
+            <img src={STRAPI_URL + sponsor.attributes.Logo.data.attributes.formats.small.url} alt={sponsor.attributes.Name} />
+          </div>
+        );
+      }
+    })}
+    <h3>Tech Sponsors</h3>
+    {sponsors.map((sponsor: any) => {
+      if (sponsor.attributes.Type === "Tech") {
+        return (
+          <div class="sponsor">
+            <img src={STRAPI_URL + sponsor.attributes.Logo.data.attributes.formats.small.url} alt={sponsor.attributes.Name} />
+          </div>
+        );
+      }
+    })}
+    <h3>Community Sponsors</h3>
+    {sponsors.map((sponsor: any) => {
+      if (sponsor.attributes.Type === "Community") {
+        return (
+          <div class="sponsor">
+            <img src={STRAPI_URL + sponsor.attributes.Logo.data.attributes.formats.small.url} alt={sponsor.attributes.Name} />
           </div>
         );
       }
     })}
   </div>
+
 
 </Layout>
 
