@@ -9,6 +9,13 @@ const index = await fetchApi<any>({
   wrappedByKey: "data",
 });
 
+const sponsors = await fetchApi<any>({
+  endpoint: "sponsors?populate=*",
+  wrappedByKey: "data",
+});
+
+console.log(sponsors);
+
 // const introContent = index.attributes.intro && await marked.parse(index.attributes.intro);
 // const subIntroContent = index.attributes.subIntro && await marked.parse(index.attributes.subIntro);
 ---
