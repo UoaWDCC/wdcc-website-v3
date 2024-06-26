@@ -64,10 +64,16 @@ const closeMenu = () => {
             ))}
       </div>
       <div className="hidden md:flex md:flex-row gap-4 lg:gap-8 text-center flex-shrink-0 text-xl cursor-pointer">
-        {navItemsRight.map((item, index)=> (
-              <a href={item.route} key={index}>{item.name}</a>
-            ))}
-      </div>
+  {navItemsRight.map((item, index) => (
+    item.name === 'Join for 2024' ? (
+      <a href={item.route} key={index} className="inline-block bg-primary text-white rounded-lg hover:bg-blue-700 transition duration-300 py-2 px-4">
+        {item.name}
+      </a>
+    ) : (
+      <a href={item.route} key={index} className="inline-block py-2 px-4">{item.name}</a>
+    )
+  ))}
+</div>
     </nav>
   </header>
 );
