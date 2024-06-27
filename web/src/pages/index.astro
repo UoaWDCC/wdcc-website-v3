@@ -35,11 +35,6 @@ const sponsors = await fetchApi<any>({
   wrappedByKey: "data",
 });
 
-interface SponsorSectionProps {
-  title: string;
-  sponsors: Sponsor[];
-}
-
 const sponsorCategories: Record<string, Sponsor[]> = {
   Gold: [],
   Silver: [],
@@ -48,73 +43,124 @@ const sponsorCategories: Record<string, Sponsor[]> = {
   Community: [],
 };
 
-console.log(sponsors);
-// const introContent = index.attributes.intro && await marked.parse(index.attributes.intro);
-// const subIntroContent = index.attributes.subIntro && await marked.parse(index.attributes.subIntro);
+sponsors.forEach((sponsor: Sponsor) => {
+  const type = sponsor.attributes.Type;
+  if (sponsorCategories[type]) {
+    sponsorCategories[type].push(sponsor);
+  }
+});
 ---
 
 <Layout title='WDCC' description="The Web Development & Consulting Club @ The University of Auckland">
-  <h1>Test H1</h1>
-  <h2>Test H2</h2>
-  <h3>Test H3</h3>
-  <h4>Test H4</h4>
-  <p>Test P</p>
-  <p class="text-sm">Text xs</p>
-  <Button>Hello</Button>
-  <div class="sponsors text-center">
-    <h2>Sponsors</h2>
-    <h3>Gold Sponsors</h3>
-    {sponsors.map((sponsor: any) => {
-      if (sponsor.attributes.Type === "Gold") {
-        return (
-          <div class="sponsor">
-            <img src={STRAPI_URL + sponsor.attributes.Logo.data.attributes.formats.small.url} alt={sponsor.attributes.Name} />
-          </div>
-        );
-      }
-    })}
-    <h3>Silver Sponsors</h3>
-    {sponsors.map((sponsor: any) => {
-      if (sponsor.attributes.Type === "Silver") {
-        return (
-          <div class="sponsor">
-            <img src={STRAPI_URL + sponsor.attributes.Logo.data.attributes.formats.small.url} alt={sponsor.attributes.Name} />
-          </div>
-        );
-      }
-    })}
-    <h3>Bronze Sponsors</h3>
-    {sponsors.map((sponsor: any) => {
-      if (sponsor.attributes.Type === "Bronze") {
-        return (
-          <div class="sponsor">
-            <img src={STRAPI_URL + sponsor.attributes.Logo.data.attributes.formats.small.url} alt={sponsor.attributes.Name} />
-          </div>
-        );
-      }
-    })}
-    <h3>Tech Sponsors</h3>
-    {sponsors.map((sponsor: any) => {
-      if (sponsor.attributes.Type === "Tech") {
-        return (
-          <div class="sponsor">
-            <img src={STRAPI_URL + sponsor.attributes.Logo.data.attributes.formats.small.url} alt={sponsor.attributes.Name} />
-          </div>
-        );
-      }
-    })}
-    <h3>Community Sponsors</h3>
-    {sponsors.map((sponsor: any) => {
-      if (sponsor.attributes.Type === "Community") {
-        return (
-          <div class="sponsor">
-            <img src={STRAPI_URL + sponsor.attributes.Logo.data.attributes.formats.small.url} alt={sponsor.attributes.Name} />
-          </div>
-        );
-      }
-    })}
+  <div class="content">
+    <h1>Test H1</h1>
+    <h2>Test H2</h2>
+    <h3>Test H3</h3>
+    <h4>Test H4</h4>
+    <p>Test P</p>
+    <p class="text-sm">Text xs</p>
+    <Button>Hello</Button>
   </div>
 
-
+  <div class="sponsors-container">
+    <div class="sponsors-text">
+      <h2>Supported by our 2024 Sponsors</h2>
+    </div>
+    <div class="sponsors-sections">
+      {Object.entries(sponsorCategories).map(([category, sponsors]) => (
+        sponsors.length > 0 && (
+          <div class="sponsor-section">
+            <img src={`/images/${category.toLowerCase()}-sponsor.png`} alt={`${category} Sponsor`} class="sponsor-section__image" />
+            <div class="sponsor-section__list">
+              {sponsors.map((sponsor: Sponsor) => (
+                <div class="sponsor">
+                  <div class="sponsor__logo-container">
+                    <img src={STRAPI_URL + sponsor.attributes.Logo.data.attributes.formats.small.url} alt={sponsor.attributes.Name} class="sponsor__logo" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )
+      ))}
+    </div>
+  </div>
 </Layout>
 
+<style>
+.content {
+  padding: 2rem;
+}
+
+.sponsors-container {
+  display: flex;
+  align-items: center; /* Center items vertically */
+  padding: 2rem;
+}
+
+.sponsors-text {
+  flex: 1;
+  max-width: 300px;
+  display: flex;
+  align-items: center; /* Center text vertically */
+  color: #087DF1;
+}
+
+.sponsors-text h2 {
+  margin: 0;
+}
+
+.sponsors-sections {
+  flex: 3;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 2rem;
+}
+
+.sponsor-section {
+  width: 100%;
+}
+
+.sponsor-section__image {
+  display: block;
+  max-width: 200px;
+  margin: 0 auto 1rem;
+}
+
+.sponsor-section__title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.sponsor-section__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Adjust alignment here */
+  gap: 2rem;
+}
+
+.sponsor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 150px; /* Adjust as needed for uniform size */
+}
+
+.sponsor__logo-container {
+  width: 120px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.sponsor__logo {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* Ensure logos are scaled to fit without distortion */
+}
+</style>
