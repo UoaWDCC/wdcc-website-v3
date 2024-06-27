@@ -40,17 +40,6 @@ interface SponsorSectionProps {
   sponsors: Sponsor[];
 }
 
-const SponsorSection: React.FC<SponsorSectionProps> = ({ title, sponsors }) => (
-  <div>
-    <h3>{title}</h3>
-    {sponsors.map((sponsor: Sponsor) => (
-      <div class="sponsor">
-        <img src={STRAPI_URL + sponsor.attributes.Logo.data.attributes.formats.small.url} alt={sponsor.attributes.Name} />
-      </div>
-    ))}
-  </div>
-);
-
 const sponsorCategories: Record<string, Sponsor[]> = {
   Gold: [],
   Silver: [],
@@ -58,14 +47,6 @@ const sponsorCategories: Record<string, Sponsor[]> = {
   Tech: [],
   Community: [],
 };
-
-sponsors.forEach((sponsor: Sponsor) => {
-  const type = sponsor.attributes.Type;
-  if (sponsorCategories[type]) {
-    sponsorCategories[type].push(sponsor);
-  }
-});
-
 
 console.log(sponsors);
 // const introContent = index.attributes.intro && await marked.parse(index.attributes.intro);
