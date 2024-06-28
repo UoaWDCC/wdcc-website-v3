@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_blog_blog_texts",
+  "info": {
+    "displayName": "BlogText"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "text"
+    }
+  }
+}
