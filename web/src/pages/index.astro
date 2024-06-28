@@ -1,32 +1,37 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import Hero from "@/components/home/Hero";
+import "@/global.css";
+import Layout from "../layouts/layout.astro";
 import fetchApi from "../lib/strapi";
-import type Article from "../interfaces/article";
-import { Image, getImage } from "astro:assets";
-import { marked, parse } from "marked";
-import Layout from '../layouts/layout.astro';
-import { Button } from "@/components/ui/button"
-import "@/global.css"
+
+const STRAPI_URL = import.meta.env.STRAPI_URL;
 
 const index = await fetchApi<any>({
   endpoint: "index?populate=*",
   wrappedByKey: "data",
 });
 
-// const introContent = index.attributes.intro && await marked.parse(index.attributes.intro);
-// const subIntroContent = index.attributes.subIntro && await marked.parse(index.attributes.subIntro);
+const intro = index.attributes.intro;
+const subIntro = index.attributes.subintro;
+const imageUrl =
+  STRAPI_URL + index.attributes.gallery.data[0].attributes.formats.large.url;
+const imageAlt = index.attributes.gallery.data[0].attributes.alternativeText;
+const linkHref = index.attributes.links[0].href;
+const linkText = index.attributes.links[0].value;
 ---
 
-<Layout title='WDCC' description="The Web Development & Consulting Club @ The University of Auckland">
-  <h1>Test H1</h1>
-  <h2>Test H2</h2>
-  <h3>Test H3</h3>
-  <h4>Test H4</h4>
-  <p>Test P</p>
-  <p class="text-sm">Text xs</p>
-  <Button>Hello</Button>
+<Layout
+  title="WDCC"
+  description="The Web Development & Consulting Club @ The University of Auckland"
+>
+  <div class="container">
+    <Hero
+      intro={intro}
+      subIntro={subIntro}
+      imageUrl={imageUrl}
+      imageAlt={imageAlt}
+      linkHref={linkHref}
+      linkText={linkText}
+    />
+  </div>
 </Layout>
-

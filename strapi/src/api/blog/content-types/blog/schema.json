@@ -34,10 +34,6 @@
       "required": true,
       "default": "Anonymous"
     },
-    "creationDate": {
-      "type": "date",
-      "required": true
-    },
     "content": {
       "type": "dynamiczone",
       "components": [

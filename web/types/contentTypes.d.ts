@@ -885,7 +885,6 @@ export interface ApiBlogBlog extends Schema.CollectionType {
     author: Attribute.String &
       Attribute.Required &
       Attribute.DefaultTo<"Anonymous">;
-    creationDate: Attribute.Date & Attribute.Required;
     content: Attribute.DynamicZone<
       ["blog.blog-header", "blog.blog-image", "blog.blog-text"]
     >;
@@ -941,6 +940,12 @@ export interface ApiIndexIndex extends Schema.SingleType {
         };
       }>;
     about: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    blocks: Attribute.DynamicZone<[]> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
