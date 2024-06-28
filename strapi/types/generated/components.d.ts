@@ -12,6 +12,48 @@ export interface AuthorAuthor extends Schema.Component {
   };
 }
 
+export interface BlogBlogHeader extends Schema.Component {
+  collectionName: "components_blog_blog_headers";
+  info: {
+    displayName: "BlogHeader";
+    description: "";
+  };
+  attributes: {
+    text: Attribute.String;
+  };
+}
+
+export interface BlogBlogImage extends Schema.Component {
+  collectionName: "components_blog_blog_images";
+  info: {
+    displayName: "BlogImage";
+    description: "";
+  };
+  attributes: {
+    image: Attribute.Media & Attribute.Required;
+    scale: Attribute.Float &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: 0;
+          max: 100;
+        },
+        number
+      > &
+      Attribute.DefaultTo<100>;
+  };
+}
+
+export interface BlogBlogText extends Schema.Component {
+  collectionName: "components_blog_blog_texts";
+  info: {
+    displayName: "BlogText";
+  };
+  attributes: {
+    text: Attribute.Text;
+  };
+}
+
 export interface LinkLink extends Schema.Component {
   collectionName: "components_link_links";
   info: {
@@ -28,6 +70,9 @@ declare module "@strapi/types" {
   export module Shared {
     export interface Components {
       "author.author": AuthorAuthor;
+      "blog.blog-header": BlogBlogHeader;
+      "blog.blog-image": BlogBlogImage;
+      "blog.blog-text": BlogBlogText;
       "link.link": LinkLink;
     }
   }

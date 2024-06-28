@@ -6,17 +6,13 @@
   "scripts": {
     "setup": "yarn && cd ./web && yarn && cd ../strapi && yarn",
     "dev": "concurrently \"cd ./web && yarn dev\" \"cd ./strapi && yarn dev\"",
+    "typegen": "cd ./strapi && yarn strapi ts:generate-types && cd .. && node copyTypes.js",
     "lint": "prettier --write ."
   },
   "devDependencies": {
+    "@strapi/strapi": "^4.25.1",
     "concurrently": "^8.2.2",
     "prettier": "3.3.2",
     "prettier-plugin-astro": "^0.14.0"
-  },
-  "dependencies": {
-    "@astrojs/react": "^3.6.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "swiper": "^11.1.4"
   }
 }
