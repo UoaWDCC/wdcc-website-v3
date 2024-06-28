@@ -30,10 +30,10 @@ const index = await fetchApi<any>({
   wrappedByKey: "data",
 });
 
-const sponsors = await fetchApi<any>({
+const sponsors = (await fetchApi<any>({
   endpoint: "sponsors?populate=*",
   wrappedByKey: "data",
-});
+})) || [];
 
 const sponsorCategories: Record<'Gold' | 'Silver' | 'Bronze' | 'Tech' | 'Community', Sponsor[]> = {
   Gold: [],
@@ -76,34 +76,34 @@ const titleImages: Record<'Gold' | 'Silver' | 'Bronze' | 'Tech' | 'Community', {
 ---
 
 <Layout title='WDCC' description="The Web Development & Consulting Club @ The University of Auckland">
-  <div class="content">
-    <h1>Test H1</h1>
-    <h2>Test H2</h2>
-    <h3>Test H3</h3>
-    <h4>Test H4</h4>
-    <p>Test P</p>
-    <p class="text-sm">Text xs</p>
+  <div class="p-8">
+    <h1 class="text-4xl font-bold mb-4">Test H1</h1>
+    <h2 class="text-3xl font-bold mb-4">Test H2</h2>
+    <h3 class="text-2xl font-bold mb-4">Test H3</h3>
+    <h4 class="text-xl font-bold mb-4">Test H4</h4>
+    <p class="mb-4">Test P</p>
+    <p class="text-sm mb-4">Text xs</p>
     <Button>Hello</Button>
   </div>
 
-  <div class="sponsors-container">
-    <div class="sponsors-text">
-      <h2>Supported by our 2024 Sponsors</h2>
+  <div class="flex items-center p-8">
+    <div class="flex-none w-80 flex items-center mr-16 text-blue-600">
+      <h2 class="text-left">Supported by our 2024 Sponsors</h2>
     </div>
-    <div class="sponsors-sections">
+    <div class="flex-1 flex flex-col gap-8">
       {Object.entries(sponsorCategories).map(([category, sponsors]) => (
         sponsors.length > 0 && (
-          <div class="sponsor-section">
+          <div class="w-full">
             <img
               src={sponsors.length === 1 ? titleImages[category as 'Gold' | 'Silver' | 'Bronze' | 'Tech' | 'Community'].singular : titleImages[category as 'Gold' | 'Silver' | 'Bronze' | 'Tech' | 'Community'].plural}
               alt={`${category} Sponsor`}
-              class="sponsor-section__title-image"
+              class="block max-w-xs mb-8 mx-0 h-9"
             />
-            <div class="sponsor-section__list">
+            <div class="flex flex-wrap justify-start gap-8">
               {sponsors.map((sponsor: Sponsor) => (
-                <div class="sponsor">
-                  <div class="sponsor__logo-container">
-                    <img src={STRAPI_URL + sponsor.attributes.Logo.data.attributes.formats.small.url} alt={sponsor.attributes.Name} class="sponsor__logo" />
+                <div class="flex flex-col items-center w-36">
+                  <div class="flex items-center justify-center w-36 h-20 overflow-hidden">
+                    <img src={STRAPI_URL + sponsor.attributes.Logo.data.attributes.formats.small.url} alt={sponsor.attributes.Name} class="max-w-full max-h-full object-contain" />
                   </div>
                 </div>
               ))}
@@ -114,76 +114,3 @@ const titleImages: Record<'Gold' | 'Silver' | 'Bronze' | 'Tech' | 'Community', {
     </div>
   </div>
 </Layout>
-
-<style>
-.content {
-  padding: 2rem;
-}
-
-.sponsors-container {
-  display: flex;
-  align-items: center; /* Center items vertically */
-  padding: 2rem;
-}
-
-.sponsors-text {
-  flex: none; /* Prevent the text container from growing or shrinking */
-  width: 300px; /* Set a fixed width */
-  display: flex;
-  align-items: center; /* Center text vertically */
-  margin-right: 4rem; /* Adjust spacing to the right */
-  color: #087DF1;
-}
-
-.sponsors-text h2 {
-  margin: 0;
-  text-align: left; /* Ensure text is left-aligned */
-}
-
-.sponsors-sections {
-  flex: 3;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.sponsor-section {
-  width: 100%;
-}
-
-.sponsor-section__title-image {
-  display: block;
-  max-width: 250px;
-  margin: 2rem 0 2rem 0;
-  height: 35px;
-}
-
-.sponsor-section__list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center; /* Center logos horizontally */
-  gap: 2rem;
-}
-
-.sponsor {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 150px; /* Adjust as needed for uniform size */
-}
-
-.sponsor__logo-container {
-  width: 140px;  /* Set the desired width */
-  height: 80px;  /* Set the desired height */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden; /* Ensure any overflow is hidden */
-}
-
-.sponsor__logo {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain; /* Ensure logos are scaled to fit without distortion */
-}
-</style>
