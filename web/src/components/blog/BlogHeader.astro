@@ -9,29 +9,28 @@ interface Props {
 const { imageUrl, title, datePublished, authorName } = Astro.props;
 ---
 
-<div class="blog-header">
-  <img src={imageUrl} alt={title} class="blog-header__image" />
-  <div class="blog-header__text">
-    <h1 class="blog-header__title">{title}</h1>
-    <div class="blog-header__meta">
-      <span class="blog-header__author">{authorName}</span> | <span
-        class="blog-header__date">{datePublished}</span
-      >
-    </div>
+<img src={imageUrl} alt={title} class="blog-header__image" />
+<div class="blog-header__text">
+  <h2 class="blog-header__title">{title}</h>
+  <div class="blog-header__meta">
+    <span class="blog-header__author">{authorName}</span> | <span
+      class="blog-header__date">{datePublished}</span
+    >
   </div>
 </div>
 
 <style>
-  .blog-header {
+  /* See [blog].astro for an example! (That's where I moved the blog-header component) */
+  /* .blog-header {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 2rem;
     text-align: left;
-  }
+  } */
 
   .blog-header__image {
-    max-width: 100%;
+    width: 100%;
     height: auto;
     border-radius: 10px;
     align-items: center;
@@ -43,7 +42,6 @@ const { imageUrl, title, datePublished, authorName } = Astro.props;
   }
 
   .blog-header__title {
-    font-size: 2.5rem;
     margin: 1rem 0;
     text-align: left;
   }

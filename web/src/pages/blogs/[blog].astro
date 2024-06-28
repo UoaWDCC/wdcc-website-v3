@@ -1,6 +1,7 @@
 ---
 import BlogContent from "@/components/blog/BlogContent";
 import BlogHeader from "@/components/blog/BlogHeader.astro";
+import SwiperCarouselWrapper from "@/components/blog/SwiperCarouselWrapper.astro";
 import Layout from "@/layouts/layout.astro";
 import fetchApi from "@/lib/strapi";
 import type { Blog as RawBlog } from "src/types/Blog";
@@ -32,7 +33,7 @@ const imageUrl =
   STRAPI_URL + blogData.attributes.bannerImage.data.attributes.url;
 const title = blogData.attributes.title;
 const authorName = blogData.attributes.author;
-const datePublished = blogData.attributes.createdAt;
+const datePublished = new Date(blogData.attributes.createdAt).toLocaleString();
 const content = blogData.attributes.content;
 
 // Temporary data for the carousel
@@ -58,8 +59,10 @@ const articles = [
 ---
 
 <Layout>
-  <BlogHeader {imageUrl} {title} {authorName} {datePublished} />
-  <BlogContent {content} />
-  <h1>More Blogs</h1>
-  <!-- <SwiperCarouselWrapper {articles} /> -->
+  <div class="m-auto max-w-screen-md">
+    <BlogHeader {imageUrl} {title} {authorName} {datePublished} />
+    <BlogContent {content} />
+    <h3>More Blogs</h3>
+    <SwiperCarouselWrapper {articles} />
+  </div>
 </Layout>

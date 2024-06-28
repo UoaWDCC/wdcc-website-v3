@@ -53,10 +53,14 @@
 
 @layer base {
   * {
-    @apply border-border;
+    @apply box-border;
   }
   body {
     @apply bg-background text-foreground;
+  }
+
+  p, h1, h2, h3, h4 {
+    @apply text-foreground m-0 mt-[0.5em];
   }
 
   h1 {
