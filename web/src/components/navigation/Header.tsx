@@ -41,13 +41,17 @@ const Header = () => {
 
   return (
     <header className="z-50 relative">
-      <nav className="flex flex-row justify-between p-10 bg-transparent sticky items-center">
-        <div>
-          <a href="/" className="font-bold text-[#087df1] text-3xl lg:mr-8">
-            WDCC
+      <nav className="flex flex-row justify-between pt-2 p-10 bg-transparent sticky items-center">
+        <div className="flex items-center">
+          <a href="/" className="lg:mr-8">
+            <img
+              src="../../public/primary_1024.png"
+              alt="WDCC Logo"
+              className="h-16 md:h-20 w-auto object-contain" // Adjusted height for different screen sizes
+            />{" "}
           </a>
         </div>
-        <div className="flex md:hidden" onClick={openMenu}>
+        <div className="flex lg:hidden" onClick={openMenu}>
           <img width={40} src="/hamburg.svg" />
         </div>
         {/* Mobile Menu */}
@@ -72,18 +76,18 @@ const Header = () => {
           </div>
         </div>
         {/* Desktop Menu */}
-        <div className="hidden md:flex md:flex-row gap-4 lg:gap-8 mx-4 text-xl cursor-pointer">
+        <div className="hidden lg:flex lg:flex-row gap-4 lg:gap-8 mx-4 text-xl font-semibold cursor-pointer">
           {navItemsCenter.map((item, index) => (
             <a
               href={item.route}
               key={index}
-              className={`${currentPath === item.route && item.route !== "/" ? "text-primary" : ""} `}
+              className={`${currentPath === item.route && item.route !== "/" ? "text-primary highlight underline underline-offset-8 decoration-2" : ""} `}
             >
               {item.name}
             </a>
           ))}
         </div>
-        <div className="hidden md:flex md:flex-row gap-4 lg:gap-8 text-center flex-shrink-0 text-xl cursor-pointer">
+        <div className="hidden lg:flex lg:flex-row gap-4 lg:gap-8 text-center flex-shrink-0 text-xl cursor-pointer">
           {navItemsRight.map((item, index) =>
             item.name === "Join for 2024" ? (
               <a
@@ -114,3 +118,4 @@ const Header = () => {
 };
 
 export default Header;
+
