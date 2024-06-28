@@ -6,7 +6,7 @@
   "scripts": {
     "setup": "yarn && cd ./web && yarn && cd ../strapi && yarn",
     "dev": "concurrently \"cd ./web && yarn dev\" \"cd ./strapi && yarn dev\"",
-    "typegen": "cd ./strapi && yarn types:generate && cp -r ./types ../web/src/types",
+    "typegen": "cd ./strapi && yarn types:generate && cp -r ./types ../web/src",
     "lint": "prettier --write ."
   },
   "devDependencies": {
