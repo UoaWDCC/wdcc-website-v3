@@ -1,7 +1,8 @@
 ---
 // src/pages/blogs/[blog].astro
 
-import SwiperCarouselWrapper from "@/components/SwiperCarouselWrapper.astro";
+import BlogContent from "@/components/blog/BlogContent";
+import SwiperCarouselWrapper from "@/components/blog/SwiperCarouselWrapper.astro";
 import Layout from "@/layouts/layout.astro";
 
 const { blog } = Astro.params;
@@ -33,6 +34,7 @@ const articles = [
 
 <Layout>
   <p>{ blog }</p>
+  <BlogContent />
   <h2>More Blogs</h2>
   <SwiperCarouselWrapper articles={articles} />
 </Layout>
