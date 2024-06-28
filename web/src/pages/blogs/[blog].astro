@@ -53,10 +53,8 @@ const articles = [
 ---
 
 <Layout>
-  <p>{slug}</p>
-  <h2>More Blogs</h2>
   <BlogHeader {imageUrl} {title} {authorName} {datePublished} />
   <BlogContent {content} />
   <h1>More Blogs</h1>
-  <SwiperCarouselWrapper articles={articles} />
+  <!-- <SwiperCarouselWrapper {articles} /> -->
 </Layout>
