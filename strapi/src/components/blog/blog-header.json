@@ -6,7 +6,10 @@
   },
   "options": {},
   "attributes": {
-    "text": {
+    "header": {
+      "type": "string"
+    },
+    "description": {
       "type": "string"
     }
   }

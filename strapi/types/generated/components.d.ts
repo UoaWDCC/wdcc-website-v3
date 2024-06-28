@@ -19,7 +19,8 @@ export interface BlogBlogHeader extends Schema.Component {
     description: "";
   };
   attributes: {
-    text: Attribute.String;
+    header: Attribute.String;
+    description: Attribute.String;
   };
 }
 
