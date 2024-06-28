@@ -41,17 +41,17 @@ const Header = () => {
 
   return (
     <header className="z-50 relative">
-      <nav className="flex flex-row justify-between pt-2 p-10 bg-transparent sticky items-center">
+      <nav className="flex flex-row justify-between pt-2 px-4 bg-transparent sticky items-center">
         <div className="flex items-center">
           <a href="/" className="lg:mr-8">
             <img
               src="../../public/primary_1024.png"
               alt="WDCC Logo"
-              className="h-16 md:h-20 w-auto object-contain" // Adjusted height for different screen sizes
+              className="h-12 md:h-16 lg:h-20 w-auto object-contain" // Adjusted height for different screen sizes
             />{" "}
           </a>
         </div>
-        <div className="flex lg:hidden" onClick={openMenu}>
+        <div className="flex md:hidden" onClick={openMenu}>
           <img width={40} src="/hamburg.svg" />
         </div>
         {/* Mobile Menu */}
@@ -76,7 +76,7 @@ const Header = () => {
           </div>
         </div>
         {/* Desktop Menu */}
-        <div className="hidden lg:flex lg:flex-row gap-4 lg:gap-8 mx-4 text-xl font-semibold cursor-pointer">
+        <div className="hidden md:flex md:flex-row gap-4 lg:gap-8 mx-4 text-lg lg:text-xl font-semibold cursor-pointer">
           {navItemsCenter.map((item, index) => (
             <a
               href={item.route}
@@ -87,13 +87,13 @@ const Header = () => {
             </a>
           ))}
         </div>
-        <div className="hidden lg:flex lg:flex-row gap-4 lg:gap-8 text-center flex-shrink-0 text-xl cursor-pointer">
+        <div className="hidden md:flex md:flex-row gap-4 lg:gap-8 text-center flex-shrink-0 text-lg lg:text-xl cursor-pointer">
           {navItemsRight.map((item, index) =>
             item.name === "Join for 2024" ? (
               <a
                 href={item.route}
                 key={index}
-                className="inline-block bg-primary text-white rounded-lg hover:bg-blue-700 transition duration-300 py-2 px-4"
+                className="inline-block bg-primary text-white rounded-lg hover:bg-blue-700 transition duration-300 py-1 lg:py-2, px-2 lg:px-4"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -103,7 +103,7 @@ const Header = () => {
               <a
                 href={item.route}
                 key={index}
-                className="inline-block py-2 px-4"
+                className="inline-block py-1 lg:py-2, px-2 lg:px-4"
                 target="_blank"
                 rel="noopener noreferrer"
               >
