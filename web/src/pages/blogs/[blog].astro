@@ -3,27 +3,32 @@ import BlogContent from "@/components/blog/BlogContent";
 import BlogHeader from "@/components/blog/BlogHeader.astro";
 import Layout from "@/layouts/layout.astro";
 import fetchApi from "@/lib/strapi";
-import type { ApiBlogBlog } from "types/contentTypes";
+import type { Blog as RawBlog } from "src/types/Blog";
 
 const { STRAPI_URL } = import.meta.env;
+
+type Blog = RawBlog & {
+  attributes: {
+    createdAt: string;
+  }
+};
 
 const slug = Astro.params.blog;
 if (!slug) return Astro.redirect("/404");
 
 // Get blog data from slug
-const blogData = await fetchApi<ApiBlogBlog | undefined>({
+const blogData = await fetchApi<Blog | undefined>({
   endpoint: `blogs`,
   query: {
     "filters[slug][$eq]": slug,
-    populate: "*",
+    populate: "deep",
   },
   wrappedByKey: "data",
   wrappedByList: true,
 });
 if (!blogData) return Astro.redirect("/404");
 
-const imageUrl =
-  STRAPI_URL + blogData.attributes.bannerImage.data.attributes.url;
+const imageUrl = STRAPI_URL + blogData.attributes.bannerImage.data.attributes.url;
 const title = blogData.attributes.title;
 const authorName = blogData.attributes.author;
 const datePublished = blogData.attributes.createdAt;

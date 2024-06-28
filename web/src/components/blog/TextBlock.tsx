@@ -1,9 +1,5 @@
-export type TextBlockType = { __component: string; text: String };
+import type { BlogText } from "@/types/components/BlogText";
 
-export default function TextBlock({ block }: { block: TextBlockType }) {
-  if (block.__component !== "blog.blog-text") {
-    throw new Error("Received incorrect block type in BlogText component");
-  }
-
+export default function TextBlock({ block }: { block: BlogText }) {
   return <p>{block.text}</p>;
 }

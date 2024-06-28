@@ -1,10 +1,6 @@
-export type HeaderBlockType = {
-  __component: string;
-  header: String;
-  description: String;
-};
+import type { BlogHeader } from "@/types/components/BlogHeader";
 
-export default function HeaderBlock({ block }: { block: HeaderBlockType }) {
+export default function HeaderBlock({ block }: { block: BlogHeader }) {
   return (
     <>
       <h2>{block.header}</h2>
