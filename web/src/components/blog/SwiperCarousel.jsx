@@ -1,11 +1,11 @@
 // src/components/SwiperCarousel.jsx
 
-import { A11y, Navigation, Pagination, Scrollbar } from 'swiper';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { A11y, Navigation, Pagination, Scrollbar } from "swiper";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 const SwiperCarousel = ({ articles }) => {
   return (
@@ -31,8 +31,12 @@ const SwiperCarousel = ({ articles }) => {
               />
             )}
             <div className="w-full flex-col flex gap-2">
-              <p className="text-2xl text-primary font-display font-bold">{article.title}</p>
-              <p className="text-md">{new Date(article.date).toLocaleDateString()}</p>
+              <p className="text-2xl text-primary font-display font-bold">
+                {article.title}
+              </p>
+              <p className="text-md">
+                {new Date(article.date).toLocaleDateString()}
+              </p>
             </div>
           </a>
         </SwiperSlide>

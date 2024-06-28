@@ -14,7 +14,9 @@ const { imageUrl, title, datePublished, authorName } = Astro.props;
   <div class="blog-header__text">
     <h1 class="blog-header__title">{title}</h1>
     <div class="blog-header__meta">
-      <span class="blog-header__author">{authorName}</span> | <span class="blog-header__date">{datePublished}</span>
+      <span class="blog-header__author">{authorName}</span> | <span
+        class="blog-header__date">{datePublished}</span
+      >
     </div>
   </div>
 </div>
@@ -51,8 +53,9 @@ const { imageUrl, title, datePublished, authorName } = Astro.props;
     color: #6c757d;
   }
 
-  .blog-header__author, .blog-header__date {
+  .blog-header__author,
+  .blog-header__date {
     font-weight: bold;
-    color: #087DF1;
+    color: #087df1;
   }
 </style>

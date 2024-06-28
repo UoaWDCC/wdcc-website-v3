@@ -23,7 +23,8 @@ const blogData = await fetchApi<ApiBlogBlog | undefined>({
 });
 if (!blogData) return Astro.redirect("/404");
 
-const imageUrl = STRAPI_URL + blogData.attributes.bannerImage.data.attributes.url;
+const imageUrl =
+  STRAPI_URL + blogData.attributes.bannerImage.data.attributes.url;
 const title = blogData.attributes.title;
 const authorName = blogData.attributes.author;
 const datePublished = blogData.attributes.createdAt;
@@ -32,31 +33,27 @@ const content = blogData.attributes.content;
 // Temporary data for the carousel
 const articles = [
   {
-    title: 'Article 1',
-    description: 'Description for Article 1',
-    href: '/article-1',
-    src: '/path/to/image1.jpg',
+    title: "Article 1",
+    description: "Description for Article 1",
+    href: "/article-1",
+    src: "/path/to/image1.jpg",
     date: new Date(),
-    authors: [
-      { name: 'Author 1', profileIcon: '/path/to/author1.jpg' },
-    ],
+    authors: [{ name: "Author 1", profileIcon: "/path/to/author1.jpg" }],
   },
   {
-    title: 'Article 2',
-    description: 'Description for Article 2',
-    href: '/article-2',
-    src: '/path/to/image2.jpg',
+    title: "Article 2",
+    description: "Description for Article 2",
+    href: "/article-2",
+    src: "/path/to/image2.jpg",
     date: new Date(),
-    authors: [
-      { name: 'Author 2', profileIcon: '/path/to/author2.jpg' },
-    ],
+    authors: [{ name: "Author 2", profileIcon: "/path/to/author2.jpg" }],
   },
   // Add more articles as needed
 ];
 ---
 
 <Layout>
-  <p>{ slug }</p>
+  <p>{slug}</p>
   <h2>More Blogs</h2>
   <BlogHeader {imageUrl} {title} {authorName} {datePublished} />
   <BlogContent {content} />

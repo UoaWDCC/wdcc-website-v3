@@ -10,7 +10,10 @@ interface Props {
   description?: string;
 }
 
-const { title='WDCC', description="The Web Development & Consulting Club @ The University of Auckland" }: Props = Astro.props;
+const {
+  title = "WDCC",
+  description = "The Web Development & Consulting Club @ The University of Auckland",
+}: Props = Astro.props;
 
 import { getImage } from "astro:assets";
 

@@ -25,9 +25,7 @@
       "type": "media",
       "multiple": false,
       "required": true,
-      "allowedTypes": [
-        "images"
-      ]
+      "allowedTypes": ["images"]
     },
     "author": {
       "type": "string",
@@ -36,11 +34,7 @@
     },
     "content": {
       "type": "dynamiczone",
-      "components": [
-        "blog.blog-header",
-        "blog.blog-image",
-        "blog.blog-text"
-      ]
+      "components": ["blog.blog-header", "blog.blog-image", "blog.blog-text"]
     }
   }
 }
