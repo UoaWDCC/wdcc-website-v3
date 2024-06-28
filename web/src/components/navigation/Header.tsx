@@ -90,6 +90,8 @@ const Header = () => {
                 href={item.route}
                 key={index}
                 className="inline-block bg-primary text-white rounded-lg hover:bg-blue-700 transition duration-300 py-2 px-4"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 {item.name}
               </a>
@@ -98,6 +100,8 @@ const Header = () => {
                 href={item.route}
                 key={index}
                 className="inline-block py-2 px-4"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 {item.name}
               </a>
