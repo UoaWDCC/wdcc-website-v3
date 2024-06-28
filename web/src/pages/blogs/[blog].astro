@@ -10,7 +10,7 @@ const { STRAPI_URL } = import.meta.env;
 type Blog = RawBlog & {
   attributes: {
     createdAt: string;
-  }
+  };
 };
 
 const slug = Astro.params.blog;
@@ -28,7 +28,8 @@ const blogData = await fetchApi<Blog | undefined>({
 });
 if (!blogData) return Astro.redirect("/404");
 
-const imageUrl = STRAPI_URL + blogData.attributes.bannerImage.data.attributes.url;
+const imageUrl =
+  STRAPI_URL + blogData.attributes.bannerImage.data.attributes.url;
 const title = blogData.attributes.title;
 const authorName = blogData.attributes.author;
 const datePublished = blogData.attributes.createdAt;
