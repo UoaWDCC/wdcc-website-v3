@@ -4,7 +4,7 @@
   "repository": "https://github.com/UoaWDCC/wdcc-website-v3.git",
   "license": "MIT",
   "scripts": {
-    "setup": "yarn && cd ./web && yarn && cd ../strapi && yarn",
+    "setup": "yarn && cd ./web && yarn && cd ../strapi && yarn && cd .. && yarn typegen",
     "dev": "concurrently \"cd ./web && yarn dev\" \"cd ./strapi && yarn dev\"",
     "typegen": "cd ./strapi && yarn types:generate && cp -r ./types ../web/src",
     "lint": "prettier --write ."
