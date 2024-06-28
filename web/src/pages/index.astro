@@ -10,7 +10,7 @@ interface Sponsor {
   id: number;
   attributes: {
     Name: string;
-    Type: string;
+    Type: 'Gold' | 'Silver' | 'Bronze' | 'Tech' | 'Community';
     Logo: {
       data: {
         attributes: {
@@ -35,7 +35,7 @@ const sponsors = await fetchApi<any>({
   wrappedByKey: "data",
 });
 
-const sponsorCategories: Record<string, Sponsor[]> = {
+const sponsorCategories: Record<'Gold' | 'Silver' | 'Bronze' | 'Tech' | 'Community', Sponsor[]> = {
   Gold: [],
   Silver: [],
   Bronze: [],
@@ -49,6 +49,30 @@ sponsors.forEach((sponsor: Sponsor) => {
     sponsorCategories[type].push(sponsor);
   }
 });
+
+// Define paths for singular and plural images
+const titleImages: Record<'Gold' | 'Silver' | 'Bronze' | 'Tech' | 'Community', { singular: string; plural: string }> = {
+  Gold: {
+    singular: '/images/gold-sponsor.png',
+    plural: '/images/gold-sponsors.png'
+  },
+  Silver: {
+    singular: '/images/silver-sponsor.png',
+    plural: '/images/silver-sponsors.png'
+  },
+  Bronze: {
+    singular: '/images/bronze-sponsor.png',
+    plural: '/images/bronze-sponsors.png'
+  },
+  Tech: {
+    singular: '/images/tech-sponsor.png',
+    plural: '/images/tech-sponsors.png'
+  },
+  Community: {
+    singular: '/images/community-sponsor.png',
+    plural: '/images/community-sponsors.png'
+  }
+};
 ---
 
 <Layout title='WDCC' description="The Web Development & Consulting Club @ The University of Auckland">
@@ -70,7 +94,11 @@ sponsors.forEach((sponsor: Sponsor) => {
       {Object.entries(sponsorCategories).map(([category, sponsors]) => (
         sponsors.length > 0 && (
           <div class="sponsor-section">
-            <img src={`/images/${category.toLowerCase()}-sponsor.png`} alt={`${category} Sponsor`} class="sponsor-section__title-image" />
+            <img
+              src={sponsors.length === 1 ? titleImages[category as 'Gold' | 'Silver' | 'Bronze' | 'Tech' | 'Community'].singular : titleImages[category as 'Gold' | 'Silver' | 'Bronze' | 'Tech' | 'Community'].plural}
+              alt={`${category} Sponsor`}
+              class="sponsor-section__title-image"
+            />
             <div class="sponsor-section__list">
               {sponsors.map((sponsor: Sponsor) => (
                 <div class="sponsor">
@@ -111,6 +139,7 @@ sponsors.forEach((sponsor: Sponsor) => {
   margin: 0;
   text-align: left; /* Ensure text is left-aligned */
 }
+
 .sponsors-sections {
   flex: 3;
   display: flex;
@@ -132,7 +161,7 @@ sponsors.forEach((sponsor: Sponsor) => {
 .sponsor-section__list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; /* Align logos to the start */
+  justify-content: center; /* Center logos horizontally */
   gap: 2rem;
 }
 
