@@ -9,26 +9,25 @@ import type { ApiBlogBlog } from "types/contentTypes";
 const { STRAPI_URL } = import.meta.env;
 
 const slug = Astro.params.blog;
-if (!slug) throw new Error("No slug provided");
+if (!slug) return Astro.redirect("/404");
 
 // Get blog data from slug
-const blogData = await fetchApi<ApiBlogBlog>({
-  endpoint: "blogs",
+const blogData = await fetchApi<ApiBlogBlog | undefined>({
+  endpoint: `blogs`,
   query: {
-    slug,
+    "filters[slug][$eq]": slug,
     populate: "*",
   },
   wrappedByKey: "data",
   wrappedByList: true,
 });
+if (!blogData) return Astro.redirect("/404");
 
 const imageUrl = STRAPI_URL + blogData.attributes.bannerImage.data.attributes.url;
 const title = blogData.attributes.title;
 const authorName = blogData.attributes.author;
 const datePublished = blogData.attributes.createdAt;
 const content = blogData.attributes.content;
-
-console.log(content);
 
 // Temporary data for the carousel
 const articles = [
@@ -60,7 +59,7 @@ const articles = [
   <p>{ slug }</p>
   <h2>More Blogs</h2>
   <BlogHeader {imageUrl} {title} {authorName} {datePublished} />
-  <BlogContent />
+  <BlogContent {content} />
   <h1>More Blogs</h1>
   <SwiperCarouselWrapper articles={articles} />
 </Layout>
