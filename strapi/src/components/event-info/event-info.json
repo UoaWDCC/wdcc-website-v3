@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_event_info_event_infos",
+  "info": {
+    "displayName": "eventInfo",
+    "icon": "clock",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "eventName": {
+      "type": "string"
+    },
+    "eventDate": {
+      "type": "datetime"
+    },
+    "eventImage": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}
