@@ -10414,6 +10414,11 @@ typedarray-to-buffer@^3.1.5:
   dependencies:
     is-typedarray "^1.0.0"
 
+types-4-strapi@^1.0.22:
+  version "1.0.22"
+  resolved "https://registry.yarnpkg.com/types-4-strapi/-/types-4-strapi-1.0.22.tgz#4b156aaa0626cd62a49860dd80bb380fa8b926ed"
+  integrity sha512-1k58eCqS+AfgW83LVoNe/zEkAkZVJBqyjfhcHl5QqzmNDjKeIgAMtoMq6Fdbkzth72+Ucpk+RRiXl4qL0rkp0Q==
+
 typescript@5.2.2:
   version "5.2.2"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.2.2.tgz#5ebb5e5a5b75f085f22bc3f8460fba308310fa78"
