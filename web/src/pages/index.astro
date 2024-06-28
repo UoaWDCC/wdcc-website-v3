@@ -70,7 +70,7 @@ sponsors.forEach((sponsor: Sponsor) => {
       {Object.entries(sponsorCategories).map(([category, sponsors]) => (
         sponsors.length > 0 && (
           <div class="sponsor-section">
-            <img src={`/images/${category.toLowerCase()}-sponsor.png`} alt={`${category} Sponsor`} class="sponsor-section__image" />
+            <img src={`/images/${category.toLowerCase()}-sponsor.png`} alt={`${category} Sponsor`} class="sponsor-section__title-image" />
             <div class="sponsor-section__list">
               {sponsors.map((sponsor: Sponsor) => (
                 <div class="sponsor">
@@ -99,22 +99,22 @@ sponsors.forEach((sponsor: Sponsor) => {
 }
 
 .sponsors-text {
-  flex: 1;
-  max-width: 300px;
+  flex: none; /* Prevent the text container from growing or shrinking */
+  width: 300px; /* Set a fixed width */
   display: flex;
   align-items: center; /* Center text vertically */
+  margin-right: 4rem; /* Adjust spacing to the right */
   color: #087DF1;
 }
 
 .sponsors-text h2 {
   margin: 0;
+  text-align: left; /* Ensure text is left-aligned */
 }
-
 .sponsors-sections {
   flex: 3;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
+  flex-direction: column;
   gap: 2rem;
 }
 
@@ -122,23 +122,17 @@ sponsors.forEach((sponsor: Sponsor) => {
   width: 100%;
 }
 
-.sponsor-section__image {
+.sponsor-section__title-image {
   display: block;
-  max-width: 200px;
-  margin: 0 auto 1rem;
-}
-
-.sponsor-section__title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-  text-align: center;
+  max-width: 250px;
+  margin: 2rem 0 2rem 0;
+  height: 35px;
 }
 
 .sponsor-section__list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; /* Adjust alignment here */
+  justify-content: center; /* Align logos to the start */
   gap: 2rem;
 }
 
@@ -150,12 +144,12 @@ sponsors.forEach((sponsor: Sponsor) => {
 }
 
 .sponsor__logo-container {
-  width: 120px;
-  height: 80px;
+  width: 140px;  /* Set the desired width */
+  height: 80px;  /* Set the desired height */
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  overflow: hidden; /* Ensure any overflow is hidden */
 }
 
 .sponsor__logo {
