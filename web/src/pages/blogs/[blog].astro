@@ -1,26 +1,36 @@
 ---
 import BlogContent from "@/components/blog/BlogContent";
-import SwiperCarouselWrapper from "@/components/blog/SwiperCarouselWrapper.astro";
 import BlogHeader from "@/components/blog/BlogHeader.astro";
+import SwiperCarouselWrapper from "@/components/blog/SwiperCarouselWrapper.astro";
 import Layout from "@/layouts/layout.astro";
 import fetchApi from "@/lib/strapi";
+import type { ApiBlogBlog } from "types/contentTypes";
+
+const { STRAPI_URL } = import.meta.env;
 
 const slug = Astro.params.blog;
+if (!slug) throw new Error("No slug provided");
 
-// const blogData = await fetchApi<>({
-//   endpoint: "blog?populate=*",
-//   wrappedByKey: "data",
-// });
+// Get blog data from slug
+const blogData = await fetchApi<ApiBlogBlog>({
+  endpoint: "blogs",
+  query: {
+    slug,
+    populate: "*",
+  },
+  wrappedByKey: "data",
+  wrappedByList: true,
+});
 
-// hardcoded with same stuff from figma for now
-const blogData = {
-  imageUrl: '/path/to/image.jpg',
-  title: 'Blog Title',
-  datePublished: 'Date Published',
-  authorName: 'Author Name',
-  content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
-};
+const imageUrl = STRAPI_URL + blogData.attributes.bannerImage.data.attributes.url;
+const title = blogData.attributes.title;
+const authorName = blogData.attributes.author;
+const datePublished = blogData.attributes.createdAt;
+const content = blogData.attributes.content;
 
+console.log(content);
+
+// Temporary data for the carousel
 const articles = [
   {
     title: 'Article 1',
@@ -49,13 +59,7 @@ const articles = [
 <Layout>
   <p>{ slug }</p>
   <h2>More Blogs</h2>
-  <BlogHeader
-    imageUrl={blogData.imageUrl}
-    title={blogData.title}
-    datePublished={blogData.datePublished}
-    authorName={blogData.authorName}
-    content={blogData.content}
-  />
+  <BlogHeader {imageUrl} {title} {authorName} {datePublished} />
   <BlogContent />
   <h1>More Blogs</h1>
   <SwiperCarouselWrapper articles={articles} />

@@ -4,10 +4,9 @@ interface Props {
   title: string;
   datePublished: string;
   authorName: string;
-  content: string;
 }
 
-const { imageUrl, title, datePublished, authorName, content } = Astro.props;
+const { imageUrl, title, datePublished, authorName } = Astro.props;
 ---
 
 <div class="blog-header">
@@ -17,7 +16,6 @@ const { imageUrl, title, datePublished, authorName, content } = Astro.props;
     <div class="blog-header__meta">
       <span class="blog-header__author">{authorName}</span> | <span class="blog-header__date">{datePublished}</span>
     </div>
-    <p class="blog-header__content">{content}</p>
   </div>
 </div>
 
@@ -56,12 +54,5 @@ const { imageUrl, title, datePublished, authorName, content } = Astro.props;
   .blog-header__author, .blog-header__date {
     font-weight: bold;
     color: #087DF1;
-  }
-
-  .blog-header__content {
-    font-size: 1.25rem;
-    color: #343a40;
-    margin-top: 1rem;
-    text-align: left;
   }
 </style>
