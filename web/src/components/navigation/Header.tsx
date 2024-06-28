@@ -68,7 +68,11 @@ const Header = () => {
           >
             <div className="p-8 flex flex-col justify-center items-center gap-8 text-3xl">
               {navItemsCenter.concat(navItemsRight).map((item, index) => (
-                <a href={item.route} key={index}>
+                <a
+                  href={item.route}
+                  key={index}
+                  className={`${currentPath === item.route ? "text-primary highlight underline underline-offset-8 decoration-2" : ""} `}
+                >
                   {item.name}
                 </a>
               ))}

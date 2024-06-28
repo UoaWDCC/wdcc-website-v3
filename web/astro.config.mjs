@@ -17,4 +17,3 @@ export default defineConfig({
     domains: ["wdcc-website.fly.storage.tigris.dev"],
   },
 });
-
