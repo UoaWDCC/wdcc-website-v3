@@ -1,0 +1,67 @@
+---
+interface Props {
+  imageUrl: string;
+  title: string;
+  datePublished: string;
+  authorName: string;
+  content: string;
+}
+
+const { imageUrl, title, datePublished, authorName, content } = Astro.props;
+---
+
+<div class="blog-header">
+  <img src={imageUrl} alt={title} class="blog-header__image" />
+  <div class="blog-header__text">
+    <h1 class="blog-header__title">{title}</h1>
+    <div class="blog-header__meta">
+      <span class="blog-header__author">{authorName}</span> | <span class="blog-header__date">{datePublished}</span>
+    </div>
+    <p class="blog-header__content">{content}</p>
+  </div>
+</div>
+
+<style>
+  .blog-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    text-align: left;
+  }
+
+  .blog-header__image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    align-items: center;
+  }
+
+  .blog-header__text {
+    max-width: 800px;
+    text-align: left;
+  }
+
+  .blog-header__title {
+    font-size: 2.5rem;
+    margin: 1rem 0;
+    text-align: left;
+  }
+
+  .blog-header__meta {
+    font-size: 1rem;
+    color: #6c757d;
+  }
+
+  .blog-header__author, .blog-header__date {
+    font-weight: bold;
+    color: #087DF1;
+  }
+
+  .blog-header__content {
+    font-size: 1.25rem;
+    color: #343a40;
+    margin-top: 1rem;
+    text-align: left;
+  }
+</style>

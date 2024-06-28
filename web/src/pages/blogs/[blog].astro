@@ -1,11 +1,26 @@
 ---
-// src/pages/blogs/[blog].astro
-
 import BlogContent from "@/components/blog/BlogContent";
 import SwiperCarouselWrapper from "@/components/blog/SwiperCarouselWrapper.astro";
+import BlogHeader from "@/components/blog/BlogHeader.astro";
 import Layout from "@/layouts/layout.astro";
+import fetchApi from "@/lib/strapi";
+import {} from "@strapi/strapi";
 
-const { blog } = Astro.params;
+const slug = Astro.params.blog;
+
+// const blogData = await fetchApi<>({
+//   endpoint: "blog?populate=*",
+//   wrappedByKey: "data",
+// });
+
+// hardcoded with same stuff from figma for now
+const blogData = {
+  imageUrl: '/path/to/image.jpg',
+  title: 'Blog Title',
+  datePublished: 'Date Published',
+  authorName: 'Author Name',
+  content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+};
 
 const articles = [
   {
@@ -33,8 +48,16 @@ const articles = [
 ---
 
 <Layout>
-  <p>{ blog }</p>
-  <BlogContent />
+  <p>{ slug }</p>
   <h2>More Blogs</h2>
+  <BlogHeader
+    imageUrl={blogData.imageUrl}
+    title={blogData.title}
+    datePublished={blogData.datePublished}
+    authorName={blogData.authorName}
+    content={blogData.content}
+  />
+  <BlogContent />
+  <h1>More Blogs</h1>
   <SwiperCarouselWrapper articles={articles} />
 </Layout>
