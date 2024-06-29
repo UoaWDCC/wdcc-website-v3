@@ -6,6 +6,10 @@ import fetchApi from "../lib/strapi";
 
 const STRAPI_URL = import.meta.env.STRAPI_URL;
 
+interface Format {
+  url: string;
+}
+
 interface Sponsor {
   id: number;
   attributes: {
@@ -15,9 +19,11 @@ interface Sponsor {
       data: {
         attributes: {
           formats: {
-            small: {
-              url: string;
-            };
+            small?: Format;
+            medium?: Format;
+            large?: Format;
+            thumbnail?: Format;
+            [key: string]: Format | undefined;
           };
         };
       };
@@ -100,13 +106,22 @@ const titleImages: Record<'Gold' | 'Silver' | 'Bronze' | 'Tech' | 'Community', {
               class="block max-w-xs mb-8 mx-0 h-9"
             />
             <div class="flex flex-wrap justify-start gap-8">
-              {sponsors.map((sponsor: Sponsor) => (
-                <div class="flex flex-col items-center w-36">
-                  <div class="flex items-center justify-center w-36 h-20 overflow-hidden">
-                    <img src={STRAPI_URL + sponsor.attributes.Logo.data.attributes.formats.small.url} alt={sponsor.attributes.Name} class="max-w-full max-h-full object-contain" />
+              {sponsors.map((sponsor: Sponsor) => {
+                const formats = sponsor.attributes.Logo.data.attributes.formats;
+                const logoUrl = formats.small?.url ||
+                                formats.medium?.url ||
+                                formats.large?.url ||
+                                formats.thumbnail?.url ||
+                                Object.values(formats)[0]?.url || '';
+
+                return (
+                  <div class="flex flex-col items-center w-36">
+                    <div class="flex items-center justify-center w-36 h-20 overflow-hidden">
+                      <img src={STRAPI_URL + logoUrl} alt={sponsor.attributes.Name} class="max-w-full max-h-full object-contain" />
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         )
