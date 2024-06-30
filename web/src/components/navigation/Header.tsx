@@ -1,23 +1,21 @@
-
 interface NavItem {
-  name: string;
-  route: string;
+  href: string;
+  value: string;
 }
 
-const navItemsCenter: NavItem[] = [
-  { name: "Home", route: "/" },
-  { name: "About Us", route: "/about" },
-  { name: "Events", route: "/events" },
-  { name: "Projects", route: "/projects" },
-  { name: "Blog", route: "/blog" },
-];
+interface HeaderProps {
+  logoUrl: string;
+  logoAlt: string;
+  navItemsCenter: NavItem[];
+  navItemsRight: NavItem[];
+}
 
-const navItemsRight: NavItem[] = [
-  { name: "Linktree", route: "https://go.wdcc.co.nz/" },
-  { name: "Join for 2024", route: "https://forms.gle/YX8RAdXGF4rTN3e27" },
-];
-
-const Header = () => {
+const Header = ({
+  logoUrl,
+  logoAlt,
+  navItemsCenter,
+  navItemsRight,
+}: HeaderProps) => {
   const currentPath = window.location.pathname;
   const openMenu = () => {
     // Disable scrolling
@@ -45,10 +43,10 @@ const Header = () => {
         <div className="flex items-center">
           <a href="/" className="lg:mr-8">
             <img
-              src="../../public/primary_1024.png"
-              alt="WDCC Logo"
+              src={logoUrl}
+              alt={logoAlt}
               className="h-12 md:h-16 lg:h-20 w-auto object-contain" // Adjusted height for different screen sizes
-            />{" "}
+            />
           </a>
         </div>
         <div className="flex md:hidden" onClick={openMenu}>
@@ -69,11 +67,11 @@ const Header = () => {
             <div className="p-8 flex flex-col justify-center items-center gap-8 text-3xl">
               {navItemsCenter.concat(navItemsRight).map((item, index) => (
                 <a
-                  href={item.route}
+                  href={item.href}
                   key={index}
-                  className={`${currentPath === item.route ? "text-primary highlight underline underline-offset-8 decoration-2" : ""} `}
+                  className={`${currentPath === item.href ? "text-primary highlight underline underline-offset-8 decoration-2" : ""} `}
                 >
-                  {item.name}
+                  {item.value}
                 </a>
               ))}
             </div>
@@ -83,35 +81,35 @@ const Header = () => {
         <div className="hidden md:flex md:flex-row gap-4 lg:gap-8 mx-4 text-lg lg:text-xl font-semibold cursor-pointer">
           {navItemsCenter.map((item, index) => (
             <a
-              href={item.route}
+              href={item.href}
               key={index}
-              className={`${currentPath === item.route ? "text-primary highlight underline underline-offset-8 decoration-2" : ""} `}
+              className={`${currentPath === item.href ? "text-primary highlight underline underline-offset-8 decoration-2" : ""} `}
             >
-              {item.name}
+              {item.value}
             </a>
           ))}
         </div>
         <div className="hidden md:flex md:flex-row gap-4 lg:gap-8 text-center flex-shrink-0 text-lg lg:text-xl cursor-pointer">
           {navItemsRight.map((item, index) =>
-            item.name === "Join for 2024" ? (
+            item.value === `Join for ${new Date().getFullYear()}` ? (
               <a
-                href={item.route}
+                href={item.href}
                 key={index}
                 className="inline-block bg-primary text-white rounded-lg hover:bg-blue-700 transition duration-300 py-1 lg:py-2, px-2 lg:px-4"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {item.name}
+                {item.value}
               </a>
             ) : (
               <a
-                href={item.route}
+                href={item.href}
                 key={index}
                 className="inline-block py-1 lg:py-2, px-2 lg:px-4"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {item.name}
+                {item.value}
               </a>
             ),
           )}
@@ -122,4 +120,3 @@ const Header = () => {
 };
 
 export default Header;
-
