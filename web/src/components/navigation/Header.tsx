@@ -6,16 +6,10 @@ interface NavItem {
 interface HeaderProps {
   logoUrl: string;
   logoAlt: string;
-  navItemsCenter: NavItem[];
-  navItemsRight: NavItem[];
+  navItems: NavItem[];
 }
 
-const Header = ({
-  logoUrl,
-  logoAlt,
-  navItemsCenter,
-  navItemsRight,
-}: HeaderProps) => {
+const Header = ({ logoUrl, logoAlt, navItems }: HeaderProps) => {
   const currentPath = window.location.pathname;
   const openMenu = () => {
     // Disable scrolling
@@ -65,7 +59,7 @@ const Header = ({
             onClick={closeMenu}
           >
             <div className="p-8 flex flex-col justify-center items-center gap-8 text-3xl">
-              {navItemsCenter.concat(navItemsRight).map((item, index) => (
+              {navItems.map((item, index) => (
                 <a
                   href={item.href}
                   key={index}
@@ -79,7 +73,7 @@ const Header = ({
         </div>
         {/* Desktop Menu */}
         <div className="hidden md:flex md:flex-row gap-4 lg:gap-8 mx-4 text-lg lg:text-xl font-semibold cursor-pointer">
-          {navItemsCenter.map((item, index) => (
+          {navItems.slice(0, -2).map((item, index) => (
             <a
               href={item.href}
               key={index}
@@ -90,7 +84,7 @@ const Header = ({
           ))}
         </div>
         <div className="hidden md:flex md:flex-row gap-4 lg:gap-8 text-center flex-shrink-0 text-lg lg:text-xl cursor-pointer">
-          {navItemsRight.map((item, index) =>
+          {navItems.slice(-2).map((item, index) =>
             item.value === `Join for ${new Date().getFullYear()}` ? (
               <a
                 href={item.href}

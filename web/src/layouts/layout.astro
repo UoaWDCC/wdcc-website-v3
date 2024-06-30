@@ -35,8 +35,7 @@ const TopographicImage = await getImage({ src: TopographicImageSrc });
     <Header
       logoUrl={logoUrl}
       logoAlt={logoAlt}
-      navItemsCenter={navItems.slice(0, -2)}
-      navItemsRight={navItems.slice(-2)}
+      navItems={navItems}
       client:only
     />
     <main class="min-h-full static">
