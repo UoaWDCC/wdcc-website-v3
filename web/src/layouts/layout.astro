@@ -19,7 +19,8 @@ const global = await fetchApi<any>({
   wrappedByKey: "data",
 });
 
-const logoUrl = STRAPI_URL + global.attributes.Navbar.logo.data.attributes.formats.large.url;
+const logoUrl =
+  STRAPI_URL + global.attributes.Navbar.logo.data.attributes.formats.large.url;
 const logoAlt = global.attributes.Navbar.logo.data.attributes.alternativeText;
 const navItems = global.attributes.Navbar.NavItems;
 
