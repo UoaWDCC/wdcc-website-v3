@@ -85,7 +85,7 @@ const Header = () => {
             <a
               href={item.route}
               key={index}
-              className={`${currentPath === item.route && item.route !== "/" ? "text-primary highlight underline underline-offset-8 decoration-2" : ""} `}
+              className={`${currentPath === item.route ? "text-primary highlight underline underline-offset-8 decoration-2" : ""} `}
             >
               {item.name}
             </a>
