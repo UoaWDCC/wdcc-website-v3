@@ -1,0 +1,22 @@
+---
+import "@/global.css";
+import Layout from "../../layouts/layout.astro";
+import fetchApi from "../../lib/strapi";
+const index = await fetchApi<any>({
+  endpoint: "about?populate=*",
+  wrappedByKey: "data",
+});
+---
+
+<Layout
+  title="WDCC"
+  description="The Web Development & Consulting Club @ The University of Auckland"
+>
+  <div class="container">
+    <h1
+      class="text-center font-bold leading-[2.7625rem] md:leading-[4.2rem] lg:leading-[5.8rem] text-3xl md:text-4xl lg:text-5xl"
+    >
+      About Us
+    </h1>
+  </div>
+</Layout>
