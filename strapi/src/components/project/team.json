@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_project_teams",
+  "info": {
+    "displayName": "Team",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "teamPhoto": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "teamLeadership": {
+      "type": "component",
+      "repeatable": true,
+      "component": "project.team-leadership"
+    },
+    "name": {
+      "type": "string",
+      "unique": false,
+      "required": true
+    }
+  }
+}
