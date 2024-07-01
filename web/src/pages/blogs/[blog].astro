@@ -39,30 +39,38 @@ const content = blogData.attributes.content;
 // Temporary data for the carousel
 const articles = [
   {
-    title: "Article 1",
-    description: "Description for Article 1",
-    href: "/article-1",
-    src: "/path/to/image1.jpg",
+    title: "Sample Article 1",
+    description: "This is a description for Sample Article 1",
+    href: "/sample-article-1",
+    src: "https://via.placeholder.com/150",
     date: new Date(),
     authors: [{ name: "Author 1", profileIcon: "/path/to/author1.jpg" }],
   },
   {
-    title: "Article 2",
-    description: "Description for Article 2",
-    href: "/article-2",
-    src: "/path/to/image2.jpg",
+    title: "Sample Article 2",
+    description: "This is a description for Sample Article 2",
+    href: "/sample-article-2",
+    src: "https://via.placeholder.com/150",
     date: new Date(),
     authors: [{ name: "Author 2", profileIcon: "/path/to/author2.jpg" }],
   },
-  // Add more articles as needed
+  {
+    title: "Sample Article 3",
+    description: "This is a description for Sample Article 3",
+    href: "/sample-article-3",
+    src: "https://via.placeholder.com/150",
+    date: new Date(),
+    authors: [{ name: "Author 3", profileIcon: "/path/to/author3.jpg" }],
+  },
 ];
+console.log("Articles passed to SwiperCarouselWrapper:", articles); // Log the articles to debug
 ---
 
 <Layout>
   <div class="m-auto max-w-screen-md">
-    <BlogHeader {imageUrl} {title} {authorName} {datePublished} />
-    <BlogContent {content} />
+    <BlogHeader imageUrl={imageUrl} title={title} authorName={authorName} datePublished={datePublished} />
+    <BlogContent content={content} />
     <h3>More Blogs</h3>
-    <SwiperCarouselWrapper {articles} />
+    <SwiperCarouselWrapper articles={articles} />
   </div>
 </Layout>

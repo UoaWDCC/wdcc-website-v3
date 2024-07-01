@@ -1,21 +1,10 @@
 ---
-// src/components/SwiperCarouselWrapper.astro
-
 import SwiperCarousel from "./SwiperCarousel.jsx";
 
-interface Article {
-  title: string;
-  description?: string;
-  href: string;
-  src?: string;
-  date: Date;
-  authors: {
-    name: string;
-    profileIcon: string;
-  }[];
-}
-
 const { articles } = Astro.props;
+
+console.log("Articles in SwiperCarouselWrapper:", articles); // Log the articles to debug
+
 ---
 
 <SwiperCarousel client:only="react" articles={articles} />

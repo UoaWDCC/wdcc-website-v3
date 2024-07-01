@@ -1,5 +1,3 @@
-// src/components/SwiperCarousel.jsx
-
 import { A11y, Navigation, Pagination, Scrollbar } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -8,6 +6,8 @@ import "swiper/css/scrollbar";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 const SwiperCarousel = ({ articles }) => {
+  console.log("Articles in SwiperCarousel:", articles); // Log the articles to debug
+
   return (
     <Swiper
       modules={[Navigation, Pagination, Scrollbar, A11y]}
