@@ -62,14 +62,15 @@
       },
       "type": "text"
     },
-    "blocks": {
+    "team": {
+      "type": "component",
+      "repeatable": false,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "dynamiczone",
-      "components": []
+      "component": "project.team"
     }
   }
 }

@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_project_team_leaderships",
+  "info": {
+    "displayName": "Team Leadership"
+  },
+  "options": {},
+  "attributes": {
+    "role": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    }
+  }
+}
