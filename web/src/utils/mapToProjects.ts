@@ -17,8 +17,13 @@ export const extractProjectData = (json: any): Project[] => {
           desc.children.map((child: { text: any }) => child.text).join(""),
       ).join("\n") ?? 'No Description',
       images: attributes?.Images?.data?.map(
-        (img: { attributes: { formats: { small: { url: string } } } }) =>
-          STRAPI_URL + img.attributes.formats.small.url,
+        (img: { attributes: { formats: { small?: { url: string }, medium?: { url: string }, large?: { url: string } } } }) =>
+          STRAPI_URL + (
+            img.attributes.formats.small?.url ??
+            img.attributes.formats.medium?.url ??
+            img.attributes.formats.large?.url ??
+            '' // Fallback URL
+          ),
       ) ?? [],
       technologies: attributes?.technologies?.data?.map(
         (tech: { attributes: { Name: string } }) => tech.attributes.Name,
