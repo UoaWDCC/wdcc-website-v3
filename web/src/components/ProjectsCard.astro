@@ -2,6 +2,10 @@
 import { Image } from "astro:assets";
 const { title, description, images, technologies, demoLink, viewDemoLink } =
   Astro.props;
+
+function truncateDescription(desc: string) {
+  return desc.length > 1500 ? `${desc.substring(0, 1500)}...` : desc;
+}
 ---
 
 <div
@@ -19,7 +23,7 @@ const { title, description, images, technologies, demoLink, viewDemoLink } =
       <h2>{title}</h2>
     </div>
     <div class="mb-4">
-      <p>{description}</p>
+      <p>{truncateDescription(description)}</p>
     </div>
     <div class="mb-4">
       <h3 class="text-xl font-bold mb-2">Technologies</h3>
