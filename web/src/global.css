@@ -26,6 +26,8 @@
     --radius: 0.5rem;
     --skyblue: 195, 100%, 90%;
     --skyblue-foreground: 195, 100%, 30%;
+    --darkblue: 217, 85%, 50%; /* HSL representation of #087DF1 */
+    --darkblue-foreground: 217, 85%, 40%; /* Adjusted for foreground, example */
   }
 
   .dark {
@@ -64,11 +66,11 @@
   }
 
   h2 {
-    @apply text-5xl font-extrabold leading-[3.75rem];
+    @apply text-center font-bold leading-[2.7625rem] md:leading-[4.2rem] lg:leading-[5.8rem] text-3xl md:text-4xl lg:text-5xl
   }
 
   h3 {
-    @apply text-center font-bold leading-[2.7625rem] md:leading-[4.2rem] lg:leading-[5.8rem] text-3xl md:text-4xl lg:text-5xl
+    @apply text-4xl font-bold leading-[2.5625rem];
   }
 
   h4 {
