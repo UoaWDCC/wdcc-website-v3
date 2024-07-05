@@ -50,6 +50,7 @@ export default async function fetchApi<T>({
       throw new Error(`HTTP error! status: ${res.status}`);
     }
 
+
     let data = await res.json();
 
     if (wrappedByKey) {

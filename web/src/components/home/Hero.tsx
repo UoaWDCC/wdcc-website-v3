@@ -1,6 +1,5 @@
 import ResponsiveImage from "../ResponsiveImage";
 import { Button } from "../ui/button";
-
 interface HeroProps {
   intro: string;
   subIntro: string;

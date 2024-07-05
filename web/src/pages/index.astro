@@ -12,6 +12,12 @@ const index = await fetchApi<any>({
   wrappedByKey: "data",
 });
 
+const indexEvent = await fetchApi<any>({
+  endpoint: "index?populate[0]=eventInfo&populate[1]=eventInfo.eventImage",
+  wrappedByKey: "data",
+});
+
+
 const intro = index.attributes.intro;
 const subIntro = index.attributes.subintro;
 const imageUrl =
@@ -19,8 +25,7 @@ const imageUrl =
 const imageAlt = index.attributes.gallery.data[0].attributes.alternativeText;
 const linkHref = index.attributes.links[0].href;
 const linkText = index.attributes.links[0].value;
-const events = index.attributes.events;
-console.log(events);
+const eventDetails = indexEvent.attributes.eventInfo;
 ---
 
 <Layout
@@ -37,7 +42,7 @@ console.log(events);
       linkText={linkText}
     />
 
-    <Events events={events} />
+    <Events events={eventDetails} client:idle />
 
   </div>
 </Layout>
