@@ -20,9 +20,7 @@
       "required": true
     },
     "Images": {
-      "allowedTypes": [
-        "images"
-      ],
+      "allowedTypes": ["images"],
       "type": "media",
       "multiple": true,
       "required": true

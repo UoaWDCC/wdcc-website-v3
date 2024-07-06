@@ -66,7 +66,7 @@
   }
 
   h2 {
-    @apply text-center font-bold leading-[2.7625rem] md:leading-[4.2rem] lg:leading-[5.8rem] text-3xl md:text-4xl lg:text-5xl
+    @apply text-center font-bold leading-[2.7625rem] md:leading-[4.2rem] lg:leading-[5.8rem] text-3xl md:text-4xl lg:text-5xl;
   }
 
   h3 {

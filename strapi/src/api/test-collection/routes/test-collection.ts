@@ -2,6 +2,8 @@
  * test-collection router
  */
 
-import { factories } from '@strapi/strapi';
+import { factories } from "@strapi/strapi";
 
-export default factories.createCoreRouter('api::test-collection.test-collection');
+export default factories.createCoreRouter(
+  "api::test-collection.test-collection",
+);

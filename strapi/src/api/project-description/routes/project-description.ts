@@ -2,6 +2,8 @@
  * project-description router
  */
 
-import { factories } from '@strapi/strapi';
+import { factories } from "@strapi/strapi";
 
-export default factories.createCoreRouter('api::project-description.project-description');
+export default factories.createCoreRouter(
+  "api::project-description.project-description",
+);
