@@ -1,28 +1,16 @@
 module.exports = ({ env }) => ({
-  // ...
-  // upload: {
-  //   config: {
-  //     provider: "aws-s3",
-  //     providerOptions: {
-  //       s3Options: {
-  //         credentials: {
-  //           accessKeyId: env("AWS_ACCESS_KEY_ID"),
-  //           secretAccessKey: env("AWS_SECRET_ACCESS_KEY"),
-  //         },
-  //         region: env("AWS_REGION"),
-  //         endpoint: env("AWS_ENDPOINT_URL_S3"),
-  //         params: {
-  //           Bucket: env("BUCKET_NAME"),
-  //         },
-  //       },
-  //     },
-  //     actionOptions: {
-  //       upload: {},
-  //       uploadStream: {},
-  //       delete: {},
-  //     },
-  //   },
-  // },
+  upload: {
+    config: {
+      breakpoints: {
+        // Image sizes
+        xlarge: 1920,
+        large: 1000,
+        medium: 750,
+        small: 500,
+        thumbnail: 64,
+      },
+    },
+  },
   "strapi-plugin-populate-deep": {
     config: {
       defaultDepth: 3, // Default is 5
