@@ -70,6 +70,10 @@ module.exports = {
           DEFAULT: "hsl(var(--skyblue))",
           foreground: "hsl(var(--skyblue-foreground))",
         },
+        darkblue: {
+          DEFAULT: "hsl(var(--darkblue))",
+          foreground: "hsl(var(--darkblue-foreground))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
