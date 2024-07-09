@@ -1,0 +1,47 @@
+---
+import { Image } from "astro:assets";
+const { title, description, images, technologies, demoLink, viewDemoLink } =
+  Astro.props;
+
+function truncateDescription(desc: string) {
+  return desc.length > 1500 ? `${desc.substring(0, 1500)}...` : desc;
+}
+---
+
+<div
+  class="mt-5 flex flex-row gap-4 bg-blue-50 rounded-lg shadow-md p-4 border border-gray-200"
+>
+  <div class="w-1/3">
+    {
+      images.map((image: string) => (
+        <Image src={image} alt="project image" width={300} height={200} />
+      ))
+    }
+  </div>
+  <div class="w-2/3 relative">
+    <div class="mb-4 font-bold text-xl">
+      <h3>{title}</h3>
+    </div>
+    <div class="mb-4">
+      <p>{truncateDescription(description)}</p>
+    </div>
+    <div class="mb-4">
+      <h3 class="text-xl font-bold mb-2">Technologies</h3>
+      <ul class="list-disc pl-4">
+        {technologies.map((tech: string) => <li>{tech}</li>)}
+      </ul>
+    </div>
+    <div class="absolute bottom-4 right-4 flex space-x-2">
+      <a
+        href={demoLink}
+        class="border border-darkblue inline-block px-4 py-2 rounded-md bg-white text-darkblue hover:bg-opacity-75"
+        >More Details</a
+      >
+      <a
+        href={viewDemoLink}
+        class="inline-block px-4 py-2 rounded-md bg-darkblue text-white hover:bg-gray-300"
+        >View Demo</a
+      >
+    </div>
+  </div>
+</div>
