@@ -61,15 +61,6 @@
         }
       },
       "type": "text"
-    },
-    "blocks": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "dynamiczone",
-      "components": []
     }
   }
 }

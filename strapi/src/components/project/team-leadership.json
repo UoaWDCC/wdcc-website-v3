@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_project_team_leaderships",
+  "info": {
+    "displayName": "Project Member",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "role": {
+      "type": "string"
+    }
+  }
+}

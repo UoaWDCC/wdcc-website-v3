@@ -6,4 +6,9 @@ export interface Project {
   technologies: string[];
   demoLink: string;
   viewDemoLink: string;
+  members: { role?: string; name: string }[];
+  teamImg?: {
+    src: string;
+    alt: string;
+  } | null;
 }

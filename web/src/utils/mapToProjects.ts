@@ -39,6 +39,27 @@ export const extractProjectData = (json: any): Project[] => {
         ) ?? [],
       demoLink: attributes?.Demo?.[0]?.href ?? "",
       viewDemoLink: attributes?.Demo?.[0]?.href ?? "",
+      members:
+        attributes?.project_team?.data?.attributes?.members?.map(
+          (member: { role: string | null; name: string }) => ({
+            role: member.role ?? null,
+            name: member.name,
+          }),
+        ) ?? [],
+      teamImg: {
+        src:
+          STRAPI_URL +
+          (attributes?.project_team?.data.attributes?.img?.data?.attributes
+            ?.formats?.small?.url ??
+            attributes?.project_team?.data.attributes?.img?.data?.attributes
+              ?.formats?.medium?.url ??
+            attributes?.project_team?.data.attributes?.img?.data?.attributes
+              ?.formats?.large?.url ??
+            ""), // Fallback URL
+        alt:
+          attributes?.project_team?.data.attributes?.img?.data?.attributes
+            ?.alternativeText ?? "",
+      },
     };
     return project;
   });

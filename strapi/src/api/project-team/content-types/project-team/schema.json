@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "project_teams",
+  "info": {
+    "singularName": "project-team",
+    "pluralName": "project-teams",
+    "displayName": "Project Team",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "project": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::project.project",
+      "inversedBy": "project_team"
+    },
+    "members": {
+      "type": "component",
+      "repeatable": true,
+      "component": "project.team-leadership"
+    },
+    "img": {
+      "allowedTypes": ["images"],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}
