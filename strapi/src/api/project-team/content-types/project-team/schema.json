@@ -24,9 +24,7 @@
       "component": "project.team-leadership"
     },
     "img": {
-      "allowedTypes": [
-        "images"
-      ],
+      "allowedTypes": ["images"],
       "type": "media",
       "multiple": false
     }
