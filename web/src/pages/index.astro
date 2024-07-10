@@ -1,6 +1,5 @@
 ---
 import Hero from "@/components/home/Hero";
-import ProjectTeam from "@/components/projects/ProjectTeam";
 import "@/global.css";
 import Layout from "../layouts/layout.astro";
 import fetchApi from "../lib/strapi";
@@ -19,20 +18,6 @@ const imageUrl =
 const imageAlt = index.attributes.gallery.data[0].attributes.alternativeText;
 const linkHref = index.attributes.links[0].href;
 const linkText = index.attributes.links[0].value;
-
-const team = await await fetchApi<any>({
-  endpoint: "index?populate[team][populate]=*",
-  wrappedByKey: "data",
-});
-
-const teamMembers = team.attributes.team.teamLeadership;
-const teamPhotoResponse = team.attributes.team.teamPhoto?.data;
-const teamImg = teamPhotoResponse
-  ? {
-      src: STRAPI_URL + teamPhotoResponse.attributes.formats.large.url,
-      alt: teamPhotoResponse.attributes.alternativeText,
-    }
-  : null;
 ---
 
 <Layout
@@ -48,6 +33,5 @@ const teamImg = teamPhotoResponse
       linkHref={linkHref}
       linkText={linkText}
     />
-    <ProjectTeam team={teamMembers} teamImg={teamImg} />
   </div>
 </Layout>

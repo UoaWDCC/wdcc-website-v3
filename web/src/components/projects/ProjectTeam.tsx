@@ -1,14 +1,8 @@
-interface Team {
-  role?: string;
-  name: string;
-}
+import type { Project } from "@/types/types";
 
 interface ProjectTeamProps {
-  team: Team[];
-  teamImg?: {
-    src: string;
-    alt: string;
-  } | null;
+  team: Project["members"];
+  teamImg?: Project["teamImg"];
 }
 
 const ProjectTeam = ({ team, teamImg }: ProjectTeamProps) => {
@@ -18,15 +12,15 @@ const ProjectTeam = ({ team, teamImg }: ProjectTeamProps) => {
         <h4>Team Leadership</h4>
         <hr className="border-t-2 border-gray-500 my-4 w-[1.25rem]" />
         <ul className="list-inside list-disc">
-          {team.map((teamMember, index) => (
+          {team.map((member, index) => (
             <li key={index} className="mb-2">
-              {teamMember.role && (
+              {member.role && (
                 <>
-                  <strong>{teamMember.role}</strong>
+                  <strong>{member.role}</strong>
                   <span className="font-normal"> - </span>
                 </>
               )}
-              {teamMember.name}
+              {member.name}
             </li>
           ))}
         </ul>

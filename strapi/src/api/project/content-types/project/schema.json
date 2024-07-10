@@ -4,7 +4,8 @@
   "info": {
     "singularName": "project",
     "pluralName": "projects",
-    "displayName": "Project"
+    "displayName": "Project",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -20,10 +21,12 @@
       "required": true
     },
     "Images": {
-      "allowedTypes": ["images"],
       "type": "media",
       "multiple": true,
-      "required": true
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
     },
     "technologies": {
       "type": "relation",
@@ -41,6 +44,12 @@
       "required": true,
       "unique": true,
       "maxLength": 8
+    },
+    "project_team": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::project-team.project-team",
+      "mappedBy": "project"
     }
   }
 }

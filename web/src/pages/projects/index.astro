@@ -1,6 +1,7 @@
 ---
 import MarkdownComponent from "@/components/MarkdownComponent.astro";
 import ProjectsCard from "@/components/ProjectsCard.astro";
+import ProjectTeam from "@/components/projects/ProjectTeam";
 import "@/global.css";
 import Layout from "@/layouts/layout.astro";
 import type { Project } from "@/types/types";
@@ -8,7 +9,7 @@ import { extractProjectData } from "@/utils/mapToProjects";
 import fetchApi from "../../lib/strapi";
 
 const index = await fetchApi<any>({
-  endpoint: "projects?populate=*",
+  endpoint: "projects?populate=deep,20",
   wrappedByKey: "data",
 });
 
@@ -42,14 +43,17 @@ const defaultDescription =
     </div>
     {
       projects.map((project) => (
-        <ProjectsCard
-          title={project.title}
-          description={project.description}
-          images={project.images}
-          technologies={project.technologies}
-          demoLink={project.demoLink}
-          viewDemoLink={project.viewDemoLink}
-        />
+        <>
+          <ProjectsCard
+            title={project.title}
+            description={project.description}
+            images={project.images}
+            technologies={project.technologies}
+            demoLink={project.demoLink}
+            viewDemoLink={project.viewDemoLink}
+          />
+          <ProjectTeam team={project.members} teamImg={project.teamImg} />
+        </>
       ))
     }
   </div>
