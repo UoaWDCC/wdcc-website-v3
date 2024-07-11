@@ -4,7 +4,8 @@
   "info": {
     "singularName": "project-requirement",
     "pluralName": "project-requirements",
-    "displayName": "Project Requirement"
+    "displayName": "Project Requirement",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -12,18 +13,21 @@
   "pluginOptions": {},
   "attributes": {
     "Description": {
-      "type": "blocks"
+      "type": "blocks",
+      "required": true
     },
     "Title": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "Demo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "videos"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     }
   }
 }
