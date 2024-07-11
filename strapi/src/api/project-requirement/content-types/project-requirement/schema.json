@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "project_requirements",
+  "info": {
+    "singularName": "project-requirement",
+    "pluralName": "project-requirements",
+    "displayName": "Project Requirement"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Description": {
+      "type": "blocks"
+    },
+    "Title": {
+      "type": "string"
+    },
+    "Demo": {
+      "allowedTypes": [
+        "images",
+        "videos"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}
