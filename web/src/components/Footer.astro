@@ -1,13 +1,39 @@
 ---
+import fetchApi from "@/lib/strapi";
+
 const today = new Date();
+
+type FooterData = {
+  attributes: {
+    linkedInUrl: string;
+    facebookUrl: string;
+    instagramUrl: string;
+    githubUrl: string;
+    emailAddress: string;
+  };
+};
+
+const footerData = await fetchApi<FooterData>({
+  endpoint: "footer?populate=*",
+  wrappedByKey: "data",
+});
+
+console.log(footerData.attributes);
 ---
 
 <footer class="w-full h-40 mt-auto pt-8">
   <div
     class="w-full h-full bg-slate-400 flex flex-col justify-center text-center"
   >
+    <a target="_blank" href={footerData.attributes.githubUrl} class="underline">
+      GitHub (remove me)
+    </a>
+    <a href={`mailto:${footerData.attributes.emailAddress}`} class="underline">
+      Email (remove me)
+    </a>
     Powered by WDCC using Astro + Typescript.
     <br />
-    &copy; {today.getFullYear()} The Web Development & Consulting Club. All rights reserved.
+    &copy; {today.getFullYear()} The Web Development & Consulting Club. All rights
+    reserved.
   </div>
 </footer>
