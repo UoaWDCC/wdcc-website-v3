@@ -34,7 +34,7 @@ export default async function fetchApi<T>({
       Authorization: `Bearer ${import.meta.env.STRAPI_API_KEY}`,
     },
   });
-  
+
   let data = await res.json();
 
   if (wrappedByKey) {
