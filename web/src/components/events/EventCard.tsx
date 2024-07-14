@@ -31,7 +31,9 @@ export default function EventCard({
         <div className="subtitle">{date.toLocaleString()}</div>
         <p className="text-xs leading-4">{description}</p>
         <Button asChild className="mt-6">
-          <a href={eventUrl} className="whitespace-pre">Find out more  ➢</a>
+          <a href={eventUrl} className="whitespace-pre">
+            Find out more ➢
+          </a>
         </Button>
       </div>
     </div>
