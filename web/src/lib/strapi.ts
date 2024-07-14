@@ -29,8 +29,12 @@ export default async function fetchApi<T>({
       url.searchParams.append(key, value);
     });
   }
-  const res = await fetch(url.toString());
-  console.log(url.toString());
+  const res = await fetch(url.toString(), {
+    headers: {
+      Authorization: `Bearer ${import.meta.env.STRAPI_API_KEY}`,
+    },
+  });
+  
   let data = await res.json();
 
   if (wrappedByKey) {

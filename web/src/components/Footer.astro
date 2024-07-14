@@ -2,6 +2,12 @@
 const today = new Date();
 ---
 
-<footer class="w-full flex justify-center items-center py-16">
-  &copy; {today.getFullYear()} The Web Development & Consulting Club
+<footer class="w-full h-40 mt-auto pt-8">
+  <div
+    class="w-full h-full bg-slate-400 flex flex-col justify-center text-center"
+  >
+    Powered by WDCC using Astro + Typescript.
+    <br />
+    &copy; {today.getFullYear()} The Web Development & Consulting Club. All rights reserved.
+  </div>
 </footer>
