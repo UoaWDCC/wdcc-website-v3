@@ -1,14 +1,20 @@
 ---
 import Layout from "@/layouts/layout.astro";
+import fetchApi from "../../lib/strapi";
+
+const eventsSummary = await fetchApi<any>({
+  endpoint: "event?populate=*",
+  wrappedByKey: "data",
+});
+
+const summary = eventsSummary.attributes.summary;
 ---
 
 <Layout title="Events" description="Upcoming events at WDCC">
   <section class="py-16 text-center">
     <h1 class="text-4xl font-bold mb-4">Upcoming Events</h1>
-    <p class="text-lg text-gray-600 max-w-5xl mx-auto">
-      WDCC hosts regular workshops, competitions and social events throughout the year.
-      We aim to help students develop practical skills that can be used in the workforce.
-      We host social events to help students network among peers and with industry people.
-    </p>
+    <div class="container">
+      <p class="text-lg">{summary}</p>
+    </div>
   </section>
 </Layout>
