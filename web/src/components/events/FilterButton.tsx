@@ -12,12 +12,19 @@ const FilterButton: React.FC<FilterButtonProps> = ({
   label = "Filter",
 }) => {
   return (
-    <button
-      onClick={onClick}
-      className={`bg-blue-500 text-white py-2 px-4 rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 ${className}`}
-    >
-      {label}
-    </button>
+    <div className={`relative ${className}`}>
+      <button
+        onClick={onClick}
+        className="filter-button"
+      >
+        {label}
+      </button>
+      <div className="dropdown">
+        <div className="dropdown-item">Most Recent</div>
+        <div className="dropdown-item">Alphabetical</div>
+        <div className="dropdown-item">Previous Events</div>
+      </div>
+    </div>
   );
 };
 
