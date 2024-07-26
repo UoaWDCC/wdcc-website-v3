@@ -1,5 +1,17 @@
 ---
 import Layout from "@/layouts/layout.astro";
+import "/Users/selin/Documents/GitHub/wdcc-website-v3/web/src/pages/events/styles.css";
+import EventCard from "@/components/events/EventCard";
+import FilterButton from "@/components/events/FilterButton";
+
+const testEvent = {
+  title: "Test Event",
+  date: new Date(),
+  description:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec purus feugiat, molestie ipsum et, consequat nibh. Etiam non elit dui.",
+  imageUrl: "https://via.placeholder.com/150",
+  eventUrl: "/",
+};
 ---
 
 <Layout title="Events" description="Upcoming events at WDCC">
@@ -11,9 +23,14 @@ import Layout from "@/layouts/layout.astro";
       We host social events to help students network among peers and with industry people.
     </p>
 
+
     <!-- filter button -->
     <div class="my-4">
-    <button class="filter-button">Filter By</button>
+      <FilterButton onClick={() => console.log('Filter button clicked')} label="Filter By" />
     </div>
+
+    <EventCard event={testEvent} />
   </section>
 </Layout>
+
+
