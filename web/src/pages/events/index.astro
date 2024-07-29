@@ -1,8 +1,8 @@
 ---
-import Layout from "@/layouts/layout.astro";
-import "/Users/selin/Documents/GitHub/wdcc-website-v3/web/src/pages/events/styles.css";
-import EventCard from "@/components/events/EventCard";
-import FilterButton from "@/components/events/FilterButton";
+import Layout from '../../layouts/layout.astro';
+import '../../pages/events/styles.css';
+import EventCard from '../../components/events/EventCard';
+import FilterButton from '../../components/events/FilterButton';
 
 const testEvent = {
   title: "Test Event",
@@ -23,7 +23,6 @@ const testEvent = {
       We host social events to help students network among peers and with industry people.
     </p>
 
-
     <!-- filter button -->
     <div class="my-4">
       <FilterButton onClick={() => console.log('Filter button clicked')} label="Filter By" />
@@ -32,5 +31,3 @@ const testEvent = {
     <EventCard event={testEvent} />
   </section>
 </Layout>
-
-
