@@ -1,0 +1,56 @@
+---
+import MarkdownComponent from "@/components/MarkdownComponent.astro";
+import ProjectsCard from "@/components/ProjectsCard.astro";
+import "@/global.css";
+import Layout from "@/layouts/layout.astro";
+import type { Project } from "@/types/types";
+import { extractProjectData } from "@/utils/mapToProjects";
+import fetchApi from "../../lib/strapi";
+
+const index = await fetchApi<any>({
+  endpoint: "projects?populate=*",
+  wrappedByKey: "data",
+});
+
+const projectDescription = await fetchApi<any>({
+  endpoint: "project-description?populate=*",
+  wrappedByKey: "data",
+});
+
+const projects: Project[] = extractProjectData(index);
+const currentYear = new Date().getFullYear();
+const defaultDescription =
+  "**WDCC projects** provides an opportunity for students to apply the knowledge they have learned in courses and workshops in real life situations. Collaborate with other members in a team environment to build a project that will actually be deployed and used by others.";
+---
+
+<Layout
+  title="WDCC"
+  description="The Web Development & Consulting Club @ The University of Auckland"
+>
+  <div class="container">
+    <h2>WDCC Projects</h2>
+    <div class="mt-10">
+      <MarkdownComponent
+        content={projectDescription.attributes.Text[0].children[0].text ??
+          defaultDescription}
+      />
+    </div>
+    <div class="mt-10">
+      <h1 class="font-bold text-xl md:text-2xl lg:text-3xl">
+        Projects {currentYear}
+      </h1>
+    </div>
+    {
+      projects.map((project) => (
+        <ProjectsCard
+          title={project.title}
+          description={project.description}
+          images={project.images}
+          technologies={project.technologies}
+          demoLink={project.demoLink}
+          viewDemoLink={project.viewDemoLink}
+        />
+      ))
+    }
+  </div>
+</Layout>

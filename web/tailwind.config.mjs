@@ -70,6 +70,10 @@ module.exports = {
           DEFAULT: "hsl(var(--skyblue))",
           foreground: "hsl(var(--skyblue-foreground))",
         },
+        darkblue: {
+          DEFAULT: "hsl(var(--darkblue))",
+          foreground: "hsl(var(--darkblue-foreground))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -89,6 +93,10 @@ module.exports = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+      },
+      boxShadow: {
+        surround: "0 0 6px 3px rgb(0 0 0 / 0.1)",
+        bottom: "0 2px 4px 1px rgb(0 0 0 / 0.08)",
       },
     },
   },
