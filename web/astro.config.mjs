@@ -11,7 +11,7 @@ export default defineConfig({
   site: "https://wdcc.co.nz",
   outDir: "./dist",
   integrations: [mdx(), sitemap(), tailwind(), react()],
-  output: "static",
+  output: "server",
   adapter: netlify(),
   image: {
     domains: ["wdcc-website.fly.storage.tigris.dev"],

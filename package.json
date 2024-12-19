@@ -4,11 +4,13 @@
   "repository": "https://github.com/UoaWDCC/wdcc-website-v3.git",
   "license": "MIT",
   "scripts": {
-    "setup": "yarn && cd ./web && yarn && cd ../strapi && yarn",
+    "setup": "yarn && cd ./web && yarn && cd ../strapi && yarn && cd .. && yarn typegen",
     "dev": "concurrently \"cd ./web && yarn dev\" \"cd ./strapi && yarn dev\"",
+    "typegen": "cd ./strapi && yarn types:generate && cp -r ./types ../web/src",
     "lint": "prettier --write ."
   },
   "devDependencies": {
+    "@strapi/strapi": "^4.25.1",
     "concurrently": "^8.2.2",
     "prettier": "3.3.2",
     "prettier-plugin-astro": "^0.14.0"

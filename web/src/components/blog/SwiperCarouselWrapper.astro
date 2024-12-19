@@ -1,0 +1,10 @@
+---
+import SwiperCarousel from "./SwiperCarousel.jsx";
+
+const { articles } = Astro.props;
+
+console.log("Articles in SwiperCarouselWrapper:", articles); // Log the articles to debug
+
+---
+
+<SwiperCarousel client:only="react" articles={articles} />
