@@ -1,0 +1,19 @@
+---
+import EventCard from "@/components/events/EventCard";
+import Layout from "@/layouts/layout.astro";
+
+const testEvent = {
+  title: "Test Event",
+  date: new Date(),
+  description:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec purus feugiat, molestie ipsum et, consequat nibh. Etiam non elit dui.",
+  imageUrl: "https://via.placeholder.com/150",
+  eventUrl: "/",
+};
+---
+
+<Layout title="Event Card Test" description="">
+  <div class="container">
+    <EventCard event={testEvent} />
+  </div>
+</Layout>

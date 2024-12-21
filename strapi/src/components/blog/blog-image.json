@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_blog_blog_images",
+  "info": {
+    "displayName": "BlogImage",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["images"]
+    },
+    "scale": {
+      "type": "float",
+      "default": 100,
+      "required": true,
+      "min": 0,
+      "max": 100
+    }
+  }
+}
