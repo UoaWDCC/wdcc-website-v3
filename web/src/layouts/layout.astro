@@ -26,7 +26,9 @@ const TopographicImage = await getImage({ src: TopographicImageSrc });
     <BaseHead title={title} description={description} />
   </head>
 
-  <body class="max-h-screen relative bg-slate-100 max-w-[1125px] mx-auto">
+  <body
+    class="min-h-full relative bg-slate-100 max-w-[1125px] mx-auto flex flex-col"
+  >
     <Header />
     <main class="min-h-full static">
       <slot />
